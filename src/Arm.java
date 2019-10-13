@@ -1,6 +1,5 @@
 public interface Arm{
 
-    // shoulder(), elbow(), wrist(), claw()
 
     /**
      * <h1>shoulder()</h1>
