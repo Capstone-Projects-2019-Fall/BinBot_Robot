@@ -1,5 +1,5 @@
 public interface Treads{
-    
+
 
     /**
      * <h1>patrol()</h1>
