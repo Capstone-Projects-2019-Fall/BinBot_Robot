@@ -5,18 +5,18 @@ import json
 
 
 class Instruction:
-    def __init__(self, string):
-        obj = json.loads(string)
-        self.__status = obj["status"]
-        self.__img = obj["img"]
-        self.__treads = obj["treads"]
-        self.__arms = obj["arms"]
-
-    def _init_(self, status, img, treads, arms):
-        self.__status = status
-        self.__img = img
-        self.__treads = treads
-        self.__arms = arms
+    def __init__(self, status, img=None, treads=None, arms=None):
+        if img is None and treads is None and arms is None:
+            obj = json.loads(status)
+            self.__status = obj["status"]
+            self.__img = obj["img"]
+            self.__treads = obj["treads"]
+            self.__arms = obj["arms"]
+        else:
+            self.__status = status
+            self.__img = img
+            self.__treads = treads
+            self.__arms = arms
 
     def json(self):
         retval = '{"status":"' + self.__status + '",'
@@ -39,4 +39,14 @@ class Instruction:
     def __img_to_string(self):
         pass
 
-    def
+    def status(self):
+        return self.__status
+
+    def img(self):
+        return self.__img
+
+    def treads(self):
+        return self.__treads
+    
+    def arms(self):
+        return self.__arms
