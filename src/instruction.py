@@ -47,6 +47,6 @@ class Instruction:
 
     def treads(self):
         return self.__treads
-    
+
     def arms(self):
         return self.__arms
