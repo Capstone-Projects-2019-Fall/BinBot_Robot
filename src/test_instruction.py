@@ -8,34 +8,28 @@ IMG = 'temporary'
 TREADS = [{"angle": 0.0, "distance": 1.1}]
 ARMS = [{"angle": 2.2}]
 
+json_obj = Instruction(JSON_STRING)
+data_obj = Instruction(STATUS, IMG, TREADS, ARMS)
+
 
 class TestInstruction(TestCase):
-    def __init__(self):
-        super().__init__()
-        self.json_obj = Instruction(JSON_STRING)
-        self.data_obj = Instruction(STATUS, IMG, TREADS, ARMS)
 
     def test_json(self):
-        assert self.json_obj.json() == JSON_STRING
-        assert self.data_obj.json() == JSON_STRING
-        self.fail()
+        self.assertEqual(JSON_STRING, json_obj.json())
+        self.assertEqual(JSON_STRING, data_obj.json())
 
     def test_status(self):
-        assert self.json_obj.status() == STATUS
-        assert self.data_obj.status() == STATUS
-        self.fail()
+        self.assertEqual(STATUS, json_obj.status())
+        self.assertEqual(STATUS, data_obj.status())
 
     def test_img(self):
-        assert self.json_obj.img() == IMG
-        assert self.data_obj.img() == IMG
-        self.fail()
+        self.assertEqual(IMG, json_obj.img())
+        self.assertEqual(IMG, data_obj.img())
 
     def test_treads(self):
-        assert self.json_obj.treads() == TREADS
-        assert self.data_obj.treads() == TREADS
-        self.fail()
+        self.assertEqual(TREADS, json_obj.treads())
+        self.assertEqual(TREADS, data_obj.treads())
 
     def test_arms(self):
-        assert self.json_obj.arms() == ARMS
-        assert self.data_obj.arms() == ARMS
-        self.fail()
+        self.assertEqual(ARMS, json_obj.arms())
+        self.assertEqual(ARMS, data_obj.arms())

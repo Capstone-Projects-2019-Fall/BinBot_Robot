@@ -23,15 +23,15 @@ class Instruction:
         retval += '"img":"' + self.__img + '",'
         retval += '"treads":['
         for x in self.__treads:
-            retval += '{"angle":' + x["angle"] + ','
-            retval += '"distance":' + x["distance"] + '}'
+            retval += '{"angle":' + str(x["angle"]) + ','
+            retval += '"distance":' + str(x["distance"]) + '}'
             if x != self.__treads[-1]:
                 retval += ','
         retval += '],'
         retval += '"arms":['
         for x in self.__arms:
-            retval += '{"angle":' + x["angle"] + '}'
-            if x != self.__treads[-1]:
+            retval += '{"angle":' + str(x["angle"]) + '}'
+            if x != self.__arms[-1]:
                 retval += ','
         retval += ']}'
         return retval
