@@ -8,7 +8,7 @@ class Treads:
             self.forward(e["distance"])
 
     def turn(self, angle):
-        print("Treads turned " + angle + " degrees.")
+        print("Treads turned " + str(angle) + " degrees.")
 
     def forward(self, distance):
-        print("Moved " + distance + " meters forward.")
+        print("Moved " + str(distance) + " meters forward.")
