@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.json.instruction import Instruction
+from src.instructions.instruction import Instruction
 
 JSON_STRING = '{"status":"PATROL","img":"temporary","treads":[{"angle":0.0,"distance":1.1}],"arms":[{"angle":2.2}]}'
 STATUS = 'PATROL'

@@ -1,5 +1,5 @@
 from src.interfaces.Connection import Connection
-from src.json.instruction import Instruction
+from src.instructions.instruction import Instruction
 
 IP = "127.0.0.1"
 PORT = 7001
