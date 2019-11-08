@@ -9,7 +9,7 @@
 import os
 import time
 
-def replace_num(file,initial,new_num):  
+def replace_num(file,initial,new_num):
     newline=""
     str_num=str(new_num)
     with open(file,"r") as f:
@@ -34,33 +34,33 @@ for x in range(1,4):
 		break
 '''
 for x in range(1,4):
-	if os.system("sudo apt-get install -y i2c-tools") == 0:
-		break
+    if os.system("sudo apt-get install -y i2c-tools") == 0:
+        break
 
 for x in range(1,4):
-	if os.system("sudo pip3 install adafruit-pca9685") == 0:
-		break
+    if os.system("sudo pip3 install adafruit-pca9685") == 0:
+        break
 
 for x in range(1,4):
-	if os.system("sudo pip3 install rpi_ws281x") == 0:
-		break
+    if os.system("sudo pip3 install rpi_ws281x") == 0:
+        break
 
 try:
-	replace_num("/boot/config.txt",'#dtparam=i2c_arm=on','dtparam=i2c_arm=on\nstart_x=1\n')
+    replace_num("/boot/config.txt",'#dtparam=i2c_arm=on','dtparam=i2c_arm=on\nstart_x=1\n')
 except:
-	print('try again')
+    print('try again')
 
 for x in range(1,4):
-	if os.system("sudo pip3 install -U pip") == 0:
-		break
+    if os.system("sudo pip3 install -U pip") == 0:
+        break
 
 for x in range(1,4):
-	if os.system("sudo pip3 install numpy") == 0:
-		break
+    if os.system("sudo pip3 install numpy") == 0:
+        break
 
 for x in range(1,4):
-	if os.system("sudo apt-get install -y libopencv-dev python3-opencv") == 0:
-		break
+    if os.system("sudo apt-get install -y libopencv-dev python3-opencv") == 0:
+        break
 '''
 for x in range(1,4):
 	if os.system("sudo apt-get install -y libhdf5-dev") == 0:   ####
@@ -91,26 +91,26 @@ for x in range(1,4):
 		break
 '''
 for x in range(1,4):
-	if os.system("sudo pip3 install imutils zmq pybase64 psutil") == 0:   ####
-		break
+    if os.system("sudo pip3 install imutils zmq pybase64 psutil") == 0:   ####
+        break
 
 for x in range(1,4):
-	if os.system("git clone https://github.com/oblique/create_ap") == 0:
-		break
+    if os.system("git clone https://github.com/oblique/create_ap") == 0:
+        break
 
 try:
-	os.system("cd //home/pi/adeept_rasptank/create_ap && sudo make install")
+    os.system("cd //home/pi/adeept_rasptank/create_ap && sudo make install")
 except:
-	pass
+    pass
 
 try:
-	os.system("cd //home/pi/create_ap && sudo make install")
+    os.system("cd //home/pi/create_ap && sudo make install")
 except:
-	pass
+    pass
 
 for x in range(1,4):
-	if os.system("sudo apt-get install -y util-linux procps hostapd iproute2 iw haveged dnsmasq") == 0:
-		break
+    if os.system("sudo apt-get install -y util-linux procps hostapd iproute2 iw haveged dnsmasq") == 0:
+        break
 '''
 try:
 	os.system('sudo mkdir //home/pi/.config/autostart')
@@ -121,11 +121,11 @@ except:
 	pass
 '''
 try:
-	os.system('sudo touch //home/pi/startup.sh')
-	with open("//home/pi/startup.sh",'w') as file_to_write:
-		file_to_write.write("#!/bin/sh\n#sleep 10s\nsudo python3 //home/pi/adeept_rasptank/server/server.py")
+    os.system('sudo touch //home/pi/startup.sh')
+    with open("//home/pi/startup.sh",'w') as file_to_write:
+        file_to_write.write("#!/bin/sh\n#sleep 10s\nsudo python3 //home/pi/adeept_rasptank/server/server.py")
 except:
-	pass
+    pass
 
 os.system('sudo chmod 777 //home/pi/startup.sh')
 
