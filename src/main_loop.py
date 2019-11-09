@@ -1,6 +1,7 @@
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
 from src.interfaces.Treads import Treads
+from src.interfaces.Camera import Camera
 
 IP = "127.0.0.1"
 PORT = 7001
@@ -11,7 +12,9 @@ treads = Treads()
 arm = None
 
 while True:
-    # img = camera.capture_img()
+
+    img = camera.take_photo()
+
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", None, None, None)
     connection.send(instr_out.json())
 

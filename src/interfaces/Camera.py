@@ -3,7 +3,6 @@
 # File Name: Camera.py
 # Description: Camera functionality
 
-
 from __future__ import division
 import time
 import RPi.GPIO as GPIO
@@ -17,12 +16,15 @@ pwm.set_pwm_freq(50)
 
 org_pos = L11_ST1
 
-
+# Setting up Raspberry Pi camera
 camera = PiCamera() # Raspberry Pi Camera
 camera.resolution = (640, 480)
 camera.framerate = 20
-camera.capture_continuous() # Capture images continuously from the camera
 
+class Camera:
+
+    def take_photo():
+        camera.capture_continuous()
 
 
 
