@@ -6,7 +6,6 @@ Date: 2019/11/8
 
 TODO Check that left and right are mixed up
 
-
 """
 
 import time
