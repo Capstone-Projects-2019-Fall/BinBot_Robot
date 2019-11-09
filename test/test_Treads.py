@@ -33,7 +33,13 @@ class TestInstruction(unittest.TestCase):
         pass
 
     def test_execute(self):
-        Treads.execute(instructions)
+        try:
+            Treads.setup()
+            Treads.execute(instructions)
+            Treads.destroy()
+        except Exception as e:
+            print("Tread exception: %s", e)
+            Treads.destroy()
 
 
 if __name__ == '__main__':
