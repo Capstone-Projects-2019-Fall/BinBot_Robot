@@ -18,7 +18,7 @@ right = {"angle": 90,
          "distance": 0.0
          }
 
-instructions = dict(treads=[forward, left, right])
+instructions = dict(treads=[forward, backward, left, right])
 
 # converts python data structure to JSON string
 json_str = json.dumps(instructions)
