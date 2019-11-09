@@ -13,6 +13,6 @@ class CameraTest:
         camera.capture('C:\Users\Silva_Surfer\Pictures')
         camera.stop_preview()
 
-    take_photo_test()
+    take_photo_test() 
 
 
