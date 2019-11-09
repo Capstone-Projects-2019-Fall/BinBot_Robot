@@ -3,22 +3,24 @@ import unittest
 from src.interfaces import Treads
 
 forward = {"angle": 0,
-           "distance": 1.5
+           "distance": 1.0
            }
 
 backward = {"angle": 180,
-            "distance": 1.5
+            "distance": 1.0
             }
 
 left = {"angle": 270,
-        "distance": 0.0
+        "distance": 1.0
         }
 
 right = {"angle": 90,
-         "distance": 0.0
+         "distance": 1.0
          }
 
-instructions = dict(treads=[forward, backward, left, right])
+# instructions = dict(treads=[forward, backward, left, right])
+
+instructions = dict(treads=[forward])
 
 # converts python data structure to JSON string
 json_str = json.dumps(instructions)
@@ -34,9 +36,9 @@ class TestInstruction(unittest.TestCase):
 
     def test_execute(self):
         try:
-            Treads.setup()
+            # Treads.setup()
             Treads.execute(instructions)
-            Treads.destroy()
+            # Treads.destroy()
         except Exception as e:
             print("Tread exception: %s", e)
             Treads.destroy()

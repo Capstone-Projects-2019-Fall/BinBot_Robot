@@ -9,19 +9,21 @@ TODO Check that left and right are mixed up
 """
 
 import time
-import RPi.GPIO as GPIO  # Linux required!
+# import RPi.GPIO as GPIO  # Linux required!
 
 
-# motor_EN_A: Pin7  |  motor_EN_B: Pin11
-# motor_A:  Pin8,Pin10    |  motor_B: Pin13,Pin12
+# motor_EN_A: Pin11  |  motor_EN_B: Pin7
+# motor_A:  Pin13,Pin12    |  motor_B: Pin8,Pin10
 
-Motor_A_EN = 4
-Motor_B_EN = 17
 
-Motor_A_Pin1 = 14
-Motor_A_Pin2 = 15
-Motor_B_Pin1 = 27
-Motor_B_Pin2 = 18
+Motor_A_EN = 17
+Motor_B_EN = 4
+
+Motor_A_Pin1 = 27
+Motor_A_Pin2 = 18
+Motor_B_Pin1 = 14
+Motor_B_Pin2 = 15
+
 
 Dir_forward = 0
 Dir_backward = 1
@@ -40,6 +42,7 @@ def execute(instructions):
     for e in instructions["treads"]:
         angle = e["angle"]
         distance = e["distance"]
+        distance = distance / 2  # TODO TESTING
         speed = 100
         radius = angle / 360
 
@@ -84,7 +87,7 @@ def _backward(distance, speed):
 
 def _rightTurn(distance, speed, radius):
     _motorLeft(1, left_forward, speed)
-    _motorRight(0, right_backward, radius)
+    _motorRight(1, right_backward, radius)
     time.sleep(distance)
     _motorStop()
     print("Treads turned " + str(radius*3.6) + " degrees right.\n")
@@ -92,7 +95,7 @@ def _rightTurn(distance, speed, radius):
 
 
 def _leftTurn(distance, speed, radius):
-    _motorLeft(0, left_backward, radius)
+    _motorLeft(1, left_backward, radius)
     _motorRight(1, right_forward, speed)
     time.sleep(distance)
     _motorStop()
