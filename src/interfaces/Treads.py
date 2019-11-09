@@ -40,45 +40,65 @@ pwm_B = 0
 def execute(instructions):
     for e in instructions["treads"]:
         angle = e["angle"]
-        dist = e["distance"]
+        distance = e["distance"]
         speed = 100
         radius = angle / 360
 
         if angle == 0 or angle == 360:
             print("forward")
-            motor_left(1, left_forward, speed)
-            motor_right(1, right_forward, speed)
-            time.sleep(dist)
-            motorStop()
+            _forward(distance, speed)
+
         elif angle == 180:
             print("backward")
-            motor_left(1, left_backward, speed)
-            motor_right(1, right_backward, speed)
-            time.sleep(dist)
-            motorStop()
+            _backward(distance, speed)
+
         elif 0 < angle < 180:
             print("right")
-            motor_left(1, left_forward, speed)
-            motor_right(0, right_backward, int(speed*radius))
-            time.sleep(dist)
-            motorStop()
+            _rightTurn(distance, speed, int(speed * radius))
+
         elif 180 < angle < 360:
             print("left")
-            radius -= 180
-            motor_left(0, left_backward, int(speed*radius))
-            motor_right(1, right_forward, speed)
-            time.sleep(dist)
-            motorStop()
+            radius -= 0.5
+            _leftTurn(distance, speed, int(speed * radius))
         else:
             print("invalid angle")
+            _motorStop()
+            raise
+    _motorStop()
 
 
-def turn(angle):
-    print("Treads turned " + str(angle) + " degrees.")
+def _forward(distance, speed):
+    _motorLeft(1, left_forward, speed)
+    _motorRight(1, right_forward, speed)
+    time.sleep(distance)
+    _motorStop()
+    print("Moved " + str(distance) + " meters forward.\n")
 
 
-def forward(distance):
-    print("Moved " + str(distance) + " meters forward.")
+def _backward(distance, speed):
+    _motorLeft(1, left_backward, speed)
+    _motorRight(1, right_backward, speed)
+    time.sleep(distance)
+    _motorStop()
+    print("Moved " + str(distance) + " meters backward.\n")
+
+
+def _rightTurn(distance, speed, radius):
+    _motorLeft(1, left_forward, speed)
+    _motorRight(0, right_backward, radius)
+    time.sleep(distance)
+    _motorStop()
+    print("Treads turned " + str(radius*3.6) + " degrees right.\n")
+    pass
+
+
+def _leftTurn(distance, speed, radius):
+    _motorLeft(0, left_backward, radius)
+    _motorRight(1, right_forward, speed)
+    time.sleep(distance)
+    _motorStop()
+    print("Treads turned " + str(radius*3.6) + " degrees left.\n")
+    pass
 
 
 def setup():
@@ -93,7 +113,7 @@ def setup():
     GPIO.setup(Motor_B_Pin1, GPIO.OUT)
     GPIO.setup(Motor_B_Pin2, GPIO.OUT)
 
-    motorStop()
+    _motorStop()
     try:
         pwm_A = GPIO.PWM(Motor_A_EN, 1000)
         pwm_B = GPIO.PWM(Motor_B_EN, 1000)
@@ -101,7 +121,7 @@ def setup():
         pass
 
 
-def motorStop():
+def _motorStop():
     # Motor stops
     GPIO.output(Motor_A_Pin1, GPIO.LOW)
     GPIO.output(Motor_A_Pin2, GPIO.LOW)
@@ -111,7 +131,7 @@ def motorStop():
     GPIO.output(Motor_B_EN, GPIO.LOW)
 
 
-def motor_right(status, direction, speed):  # Motor 2 positive and negative rotation
+def _motorRight(status, direction, speed):  # Motor 2 positive and negative rotation
     if status == 0:  # stop
         GPIO.output(Motor_B_Pin1, GPIO.LOW)
         GPIO.output(Motor_B_Pin2, GPIO.LOW)
@@ -129,7 +149,7 @@ def motor_right(status, direction, speed):  # Motor 2 positive and negative rota
             pwm_B.ChangeDutyCycle(speed)
 
 
-def motor_left(status, direction, speed):  # Motor 1 positive and negative rotation
+def _motorLeft(status, direction, speed):  # Motor 1 positive and negative rotation
     if status == 0:  # stop
         GPIO.output(Motor_A_Pin1, GPIO.LOW)
         GPIO.output(Motor_A_Pin2, GPIO.LOW)
@@ -148,15 +168,6 @@ def motor_left(status, direction, speed):  # Motor 1 positive and negative rotat
     return direction
 
 
-
 def destroy():
-    motorStop()
+    _motorStop()
     GPIO.cleanup()  # Release resource
-
-
-if __name__ == '__main__':
-    try:
-        setup()
-
-    except KeyboardInterrupt:
-        destroy()
