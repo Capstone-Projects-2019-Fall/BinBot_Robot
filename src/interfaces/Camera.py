@@ -26,12 +26,6 @@ class Camera:
     def take_photo(self):
         camera.capture_continuous()
 
-    def take_photo_test(self):
-        camera.start_preview()
-        sleep(5)
-        camera.capture('C:\Users\Silva_Surfer\Pictures')
-        camera.stop_preview()
-
 
 
 
