@@ -9,7 +9,7 @@ TODO Check that left and right are mixed up
 """
 
 import time
-# import RPi.GPIO as GPIO  # Linux required!
+import RPi.GPIO as GPIO  # Linux required!
 
 
 # motor_EN_A: Pin11  |  motor_EN_B: Pin7

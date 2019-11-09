@@ -36,9 +36,9 @@ class TestInstruction(unittest.TestCase):
 
     def test_execute(self):
         try:
-            # Treads.setup()
+            Treads.setup()
             Treads.execute(instructions)
-            # Treads.destroy()
+            Treads.destroy()
         except Exception as e:
             print("Tread exception: %s", e)
             Treads.destroy()
