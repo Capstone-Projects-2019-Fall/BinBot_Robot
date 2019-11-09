@@ -24,8 +24,11 @@ camera.framerate = 20
 class Camera:
 
     def take_photo(self):
-        camera.capture_continuous()
-
+        camera = PiCamera()
+        camera.start_preview()
+        sleep(5)
+        camera.capture()
+        camera.stop_preview()
 
 
 
