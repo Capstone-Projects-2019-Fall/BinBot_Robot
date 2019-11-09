@@ -7,31 +7,45 @@
 from __future__ import division
 import time
 import RPi.GPIO as GPIO
-import Adafruit_PCA9685
+import Adafruit_PCA9685 # Library that helps control servos
+
+from picamera import PiCamera
+from time import sleep
 
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-
 org_pos = L11_ST1
 
-def camera_ang(direction, ang): # Camera angle function
-	global org_pos
-	if ang == 0:
-		ang=4
-	if direction == 'lookdown':
-		if org_pos <= L11_MAX:
-			org_pos+=ang
-		else:
-			org_pos = L11_MAX
-	elif direction == 'lookup':
-		if org_pos >= L11_MIN:
-			org_pos-=ang
-		else:
-			org_pos = L11_MIN
-	elif direction == 'home':
-		org_pos = L11_MAX
-	else:
-		pass
-	#print(ang)
-	pwm.set_pwm(11,0,org_pos)
+
+camera = PiCamera() # Raspberry Pi Camera
+camera.resolution = (640, 480)
+camera.framerate = 20
+camera.capture_continuous() # Capture images continuously from the camera
+
+
+
+
+
+'''
+def camera_ang(direction, ang):  # Camera angle method
+    global org_pos
+    if ang == 0:
+        ang = 4
+    if direction == 'lookdown':
+        if org_pos <= L11_MAX:
+            org_pos += ang
+        else:
+            org_pos = L11_MAX
+    elif direction == 'lookup':
+        if org_pos >= L11_MIN:
+            org_pos -= ang
+        else:
+            org_pos = L11_MIN
+    elif direction == 'home':
+        org_pos = L11_MAX
+    else:
+        pass
+    # print(ang)
+    pwm.set_pwm(11, 0, org_pos)
+'''
