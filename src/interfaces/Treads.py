@@ -57,13 +57,13 @@ def executeTreadInstruction(instruction):
     elif 0 < angle < 180:
         print("Treads turning " + str(angle) + " degrees right.")
         turn_scale = angle * (2 / 3) * 0.01
-        _rightTurn(distance, speed, int(speed * turn_scale))
+        _rightTurn(distance, speed, turn_scale)
 
     elif 180 < angle < 360:
         angle -= 180
         print("Treads turning " + str(angle) + " degrees left.")
-        turn_scale = angle* (2 / 3) * 0.01
-        _leftTurn(distance, speed, int(speed * turn_scale))
+        turn_scale = angle * (2 / 3) * 0.01
+        _leftTurn(distance, speed, turn_scale)
     else:
         print("invalid angle")
         _motorStop()
@@ -79,22 +79,24 @@ def test_executeTreadInstruction(instruction):
 
     if angle == 0 or angle == 360:
         print("Moving " + str(distance * 10) + " cm forward.")
-        print(f"Distance: {distance} -- speed: {speed}")
+        print(f"Distance: {distance} -- speed: {speed} -- sleep: {distance * d_scale}")
 
     elif angle == 180:
         print("Moving " + str(distance*10) + " cm backward.")
-        print(f"Distance: {distance} -- speed: {speed}")
+        print(f"Distance: {distance} -- speed: {speed} -- sleep: {distance * d_scale}")
 
     elif 0 < angle < 180:
         print("Treads turning " + str(angle) + " degrees right.")
         turn_scale = angle * (2 / 3) * 0.01
-        print(f"Distance: {distance} -- speed: {speed} -- radius: {int(speed * turn_scale)}")
+        turn = distance * turn_scale
+        print(f"Distance: {distance} -- speed: {speed} -- sleep: {turn}")
 
     elif 180 < angle < 360:
         angle -= 180
         print("Treads turning " + str(angle) + " degrees left.")
-        turn_scale = angle* (2 / 3) * 0.01
-        print(f"Distance: {distance} -- speed: {speed} -- radius: {int(speed * turn_scale)}")
+        turn_scale = angle * (2 / 3) * 0.01
+        turn = distance * turn_scale
+        print(f"Distance: {distance} -- speed: {speed} -- sleep: {turn}")
     else:
         print("invalid angle")
         raise
@@ -118,21 +120,21 @@ def _backward(distance, speed):
     print("Moved " + str(distance*10) + " cm backward.")
 
 
-def _rightTurn(distance, speed, radius):
+def _rightTurn(distance, speed, t_scale):
     _motorLeft(1, left_forward, speed)
-    _motorRight(1, right_backward, radius)
-    time.sleep(distance * d_scale)
+    _motorRight(1, right_backward, speed)
+    time.sleep(distance * t_scale)
     _motorStop()
-    print("Treads turned " + str(radius*3.6) + " degrees right.")
+    print("Treads turned " + str(t_scale*3.6) + " degrees right.")
     pass
 
 
-def _leftTurn(distance, speed, radius):
-    _motorLeft(1, left_backward, radius)
+def _leftTurn(distance, speed, t_scale):
+    _motorLeft(1, left_backward, speed)
     _motorRight(1, right_forward, speed)
-    time.sleep(distance * d_scale)
+    time.sleep(distance * t_scale)
     _motorStop()
-    print("Treads turned " + str(radius*3.6) + " degrees left.")
+    print("Treads turned " + str(t_scale*3.6) + " degrees left.")
     pass
 
 
