@@ -26,7 +26,7 @@ class Camera:
         camera = PiCamera()
         camera.start_preview()
         sleep(5)
-        camera.capture("/home/pi/Deskop/newImage.jpg")
+        camera.capture("/home/pi/Desktop/newImage.jpg")
         camera.stop_preview()
 
 

@@ -13,7 +13,7 @@ arm = None
 
 while True:
 
-    img = camera.take_photo()
+    # img = camera.take_photo()
 
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", None, None, None)
     connection.send(instr_out.json())
