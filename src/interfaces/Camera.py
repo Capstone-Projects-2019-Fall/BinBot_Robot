@@ -4,56 +4,32 @@
 # Description: Camera functionality
 
 from __future__ import division
+import picamera
 import time
-import RPi.GPIO as GPIO
-import Adafruit_PCA9685 # Library that helps control servos
 
-from picamera import PiCamera
-from time import sleep
-
-pwm = Adafruit_PCA9685.PCA9685()
-pwm.set_pwm_freq(50)
 
 # Setting up Raspberry Pi camera
-camera = PiCamera() # Raspberry Pi Camera
-camera.resolution = (640, 480)
-#camera.framerate = 20
+# camera = PiCamera() # Raspberry Pi Camera
+# camera.resolution = (640, 480)
+# camera.framerate = 20
 
-class Camera:
-
-
-    def take_photo(self):
-        camera = PiCamera()
-        camera.start_preview()
-        sleep(5)
-        camera.capture("/home/pi/Desktop/newImage.jpg")
-        camera.stop_preview()
-
-
-
+def take_photo():
+    camera = picamera.PiCamera()
+    camera.resolution = (1280, 720)
+    camera.framerate = 30
+    camera.start_preview()
+    time.sleep(5)
+    print("About to take a photo")
+    camera.capture("/home/pi/Desktop/newImage.jpg")
+    print("Finished taking a photo")
+    camera.stop_preview()
 
 
+if __name__ == '__main__':
+    try:
+        take_photo()
+    except Exception as e:
+        print("take_photo exception: %s", e)
 
 
-'''
-def camera_ang(direction, ang):  # Camera angle method
-    global org_pos
-    if ang == 0:
-        ang = 4
-    if direction == 'lookdown':
-        if org_pos <= L11_MAX:
-            org_pos += ang
-        else:
-            org_pos = L11_MAX
-    elif direction == 'lookup':
-        if org_pos >= L11_MIN:
-            org_pos -= ang
-        else:
-            org_pos = L11_MIN
-    elif direction == 'home':
-        org_pos = L11_MAX
-    else:
-        pass
-    # print(ang)
-    pwm.set_pwm(11, 0, org_pos)
-'''
+
