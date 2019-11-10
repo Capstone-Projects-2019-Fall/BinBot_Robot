@@ -40,11 +40,10 @@ pwm_B = 0
 d_scale = 0.5  # Scales sleep to unit of distance
 speed = 60     # Speed at which the treads move
 
+
 def executeTreadInstruction(instruction):
     angle = instruction["angle"]
     distance = instruction["distance"]
-    radius = angle / 360
-    radius = 0.6  # TODO override for testing
 
     if angle == 0 or angle == 360:
         print("Moving " + str(distance * 10) + " cm forward.\n")
@@ -55,13 +54,15 @@ def executeTreadInstruction(instruction):
         _backward(distance, speed)
 
     elif 0 < angle < 180:
-        print("Treads turning " + str(radius*3.6) + " degrees right.\n")
-        _rightTurn(distance, speed, int(speed * radius))
+        print("Treads turning " + str(angle) + " degrees right.\n")
+        turn_scale = angle * (2 / 3) * 0.01
+        _rightTurn(distance, speed, int(speed * turn_scale))
 
     elif 180 < angle < 360:
-        print("Treads turning " + str(radius*3.6) + " degrees left.\n")
-        radius -= 0.5
-        _leftTurn(distance, speed, int(speed * radius))
+        angle -= 180
+        print("Treads turning " + str(angle) + " degrees left.\n")
+        turn_scale = angle* (2 / 3) * 0.01
+        _leftTurn(distance, speed, int(speed * turn_scale))
     else:
         print("invalid angle")
         _motorStop()
