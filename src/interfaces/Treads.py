@@ -46,6 +46,7 @@ def execute(instructions):
         distance = e["distance"]
         speed = 60
         radius = angle / 360
+        radius = 0.6
 
         if angle == 0 or angle == 360:
             print("forward")
@@ -67,6 +68,8 @@ def execute(instructions):
             print("invalid angle")
             _motorStop()
             raise
+
+        time.sleep(1)
     _motorStop()
 
 
