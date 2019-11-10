@@ -1,6 +1,5 @@
 # Author: Sean DiGirolamo
 # Date: 10/30/2019
-import select
 import socket
 
 
@@ -21,13 +20,11 @@ class Connection:
     def send(self, msg):
         self.__sock.sendall(str.encode(msg + "\n"))
         self.__receive_ack()
-        print()
 
     def receive(self):
         length = self.__receive_length()
         retval = self.__sock.recv(length).decode("utf-8")
-        self.__send_ack()
-        self.__drain()
+        # self.__send_ack()
         return retval
 
     def close(self):
@@ -35,7 +32,6 @@ class Connection:
 
     def __receive_length(self):
         retval = int.from_bytes(self.__sock.recv(JAVA_INT_BYTES), ENDIAN)
-        self.__send_ack()
         return retval
 
     def __send_ack(self):
@@ -44,11 +40,3 @@ class Connection:
 
     def __receive_ack(self):
         data = self.__sock.recv(ACK_BYTES)
-
-    def __drain(self):
-        """remove the data present on the socket"""
-        input = [self.__sock]
-        while 1:
-            inputready, o, e = select.select(input, [], [], 0.0)
-            if len(inputready) == 0: break
-            for s in inputready: s.recv(1)
