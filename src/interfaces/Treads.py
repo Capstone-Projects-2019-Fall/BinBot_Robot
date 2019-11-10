@@ -122,7 +122,7 @@ def _backward(distance, speed):
 
 def _rightTurn(distance, speed, t_scale):
     _motorLeft(1, left_forward, speed)
-    _motorRight(1, right_backward, speed)
+    _motorRight(1, right_backward, int(speed * 0.9))
     time.sleep(distance * t_scale)
     _motorStop()
     print("Treads turned " + str(t_scale*3.6) + " degrees right.")
@@ -130,7 +130,7 @@ def _rightTurn(distance, speed, t_scale):
 
 
 def _leftTurn(distance, speed, t_scale):
-    _motorLeft(1, left_backward, speed)
+    _motorLeft(1, left_backward, int(speed * 0.9))
     _motorRight(1, right_forward, speed)
     time.sleep(distance * t_scale)
     _motorStop()
@@ -240,7 +240,8 @@ if __name__ == '__main__':
     # eight point patrol
     instructions = dict(treads=[
             {"angle": 0, "distance": 1.0},    # move forward 10 cm
-            {"angle": 45, "distance": 1.0},   # turn right 45 degrees 7 times
+            {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
+            {"angle": 45, "distance": 1.0},
             {"angle": 45, "distance": 1.0},
             {"angle": 45, "distance": 1.0},
             {"angle": 45, "distance": 1.0},
