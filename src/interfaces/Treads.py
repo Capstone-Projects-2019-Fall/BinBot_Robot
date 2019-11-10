@@ -75,7 +75,7 @@ def _forward(distance, speed):
     _motorRight(1, right_forward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance) + " meters forward.\n")
+    print("Moved " + str(distance*10) + " cm forward.\n")
 
 
 def _backward(distance, speed):
@@ -83,7 +83,7 @@ def _backward(distance, speed):
     _motorRight(1, right_backward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance) + " meters backward.\n")
+    print("Moved " + str(distance*10) + " cm backward.\n")
 
 
 def _rightTurn(distance, speed, radius):
@@ -196,7 +196,10 @@ if __name__ == '__main__':
 
     # instructions = dict(treads=[forward, backward, left, right])
 
-    instructions = dict(treads=[forward])
+    # square
+    instructions = dict(treads=[forward, right, forward, right, forward])
+
+    # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
 
     try:
         setup()
