@@ -195,28 +195,33 @@ if __name__ == '__main__':
              "distance": 1.0
              }
 
-    instructions = dict()
-
     # test each
     # instructions = dict(treads=[forward, backward, left, right])
 
     # square
-    instructions = dict(treads=[forward, right, forward, right, forward])
+    # instructions = dict(treads=[forward, right, forward, right, forward])
 
     # random
     # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
 
     # eight point patrol
     instructions = {"treads": [
-        {"angle": 0, "distance": 1.0}
-        {"angle": 0, "distance": 1.0}
-    ]}
+            {"angle": 0, "distance": 1.0},    # move forward 10 cm
+            {"angle": 45, "distance": 1.0},   # turn right 45 degrees 7 times
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 180, "distance": 1.0},  # move backwards 10 cm
+        ]
+    }
 
     try:
         setup()
         for movement in instructions["treads"]:
-            executeTreadInstruction(movement)
             print("capture photo")
+            executeTreadInstruction(movement)
         destroy()
     except Exception as e:
         print("Tread exception: %s", e)
