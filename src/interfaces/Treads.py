@@ -207,7 +207,10 @@ if __name__ == '__main__':
     # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
 
     # eight point patrol
-    instructions = {}
+    instructions = {"treads": [
+        {"angle": 0, "distance": 1.0}
+        {"angle": 0, "distance": 1.0}
+    ]}
 
     try:
         setup()
