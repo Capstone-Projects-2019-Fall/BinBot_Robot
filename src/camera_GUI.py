@@ -12,4 +12,5 @@ canvas.create_image(20, 20, anchor=NW, image=img)
 
 m.title('BinBot Camera Viewer')
 
+# Test commit
 m.mainloop()
