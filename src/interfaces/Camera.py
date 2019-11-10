@@ -12,17 +12,18 @@ import time
 # camera = PiCamera() # Raspberry Pi Camera
 # camera.resolution = (640, 480)
 # camera.framerate = 20
+class Camera:
 
-def take_photo():
-    camera = picamera.PiCamera()
-    camera.resolution = (1280, 720)
-    camera.framerate = 30
-    camera.start_preview()
-    time.sleep(5)
-    print("About to take a photo")
-    camera.capture("/home/pi/Desktop/newImage.jpg")
-    print("Finished taking a photo")
-    camera.stop_preview()
+    def take_photo(self):
+        camera = picamera.PiCamera()
+        camera.resolution = (1280, 720)
+        camera.framerate = 30
+        camera.start_preview()
+        time.sleep(5)
+        print("About to take a photo")
+        camera.capture("/home/pi/Desktop/newImage.jpg")
+        print("Finished taking a photo")
+        camera.stop_preview()
 
 
 if __name__ == '__main__':
