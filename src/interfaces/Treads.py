@@ -56,13 +56,13 @@ def executeTreadInstruction(instruction):
 
     elif 0 < angle < 180:
         print("Treads turning " + str(angle) + " degrees right.")
-        turn_scale = angle * (2 / 3) * 0.01
+        turn_scale = angle * 0.01
         _rightTurn(distance, speed, turn_scale)
 
     elif 180 < angle < 360:
         angle -= 180
         print("Treads turning " + str(angle) + " degrees left.")
-        turn_scale = angle * (2 / 3) * 0.01
+        turn_scale = angle * 0.01
         _leftTurn(distance, speed, turn_scale)
     else:
         print("invalid angle")
@@ -87,14 +87,14 @@ def test_executeTreadInstruction(instruction):
 
     elif 0 < angle < 180:
         print("Treads turning " + str(angle) + " degrees right.")
-        turn_scale = angle * (2 / 3) * 0.01
+        turn_scale = angle * 0.01
         turn = distance * turn_scale
         print(f"Distance: {distance} -- speed: {speed} -- sleep: {turn}")
 
     elif 180 < angle < 360:
         angle -= 180
         print("Treads turning " + str(angle) + " degrees left.")
-        turn_scale = angle * (2 / 3) * 0.01
+        turn_scale = angle * 0.01
         turn = distance * turn_scale
         print(f"Distance: {distance} -- speed: {speed} -- sleep: {turn}")
     else:
