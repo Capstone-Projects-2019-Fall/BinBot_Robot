@@ -1,7 +1,7 @@
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
-from src.interfaces.Treads import Treads
-from src.interfaces.Camera import Camera
+from src.interfaces import Treads
+from src.interfaces import Camera
 
 IP = "127.0.0.1"
 PORT = 7001
