@@ -195,7 +195,6 @@ if __name__ == '__main__':
              "distance": 1.0
              }
 
-
     instructions = dict()
 
     # test each
@@ -206,6 +205,9 @@ if __name__ == '__main__':
 
     # random
     # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
+
+    # eight point patrol
+    instructions = {}
 
     try:
         setup()
