@@ -30,6 +30,9 @@ class Connection:
         self.__drain()
         return retval
 
+    def close(self):
+        self.__sock.close()
+
     def __receive_length(self):
         retval = int.from_bytes(self.__sock.recv(JAVA_INT_BYTES), ENDIAN)
         self.__send_ack()
