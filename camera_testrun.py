@@ -14,5 +14,5 @@ with picamera.PiCamera() as camera:
     camera.awb_mode = 'off'
     camera.awb_gains = g
     # take several photos
-    camera.capture_sequence('home/pi/Desktop', ['image%02d.jpg' % i for i in range(10)])
+    camera.capture_sequence(['image%02d.jpg' % i for i in range(10)])
 print("Picture was taken with pi camera")
