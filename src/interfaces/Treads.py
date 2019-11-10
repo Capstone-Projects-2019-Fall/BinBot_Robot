@@ -10,7 +10,8 @@ TODO Check that left and right are mixed up
 
 import time
 import RPi.GPIO as GPIO  # Linux required!
-
+test = False
+# test = True
 
 # motor_EN_A: Pin11  |  motor_EN_B: Pin7
 # motor_A:  Pin13,Pin12    |  motor_B: Pin8,Pin10
@@ -38,7 +39,7 @@ pwn_A = 0
 pwm_B = 0
 
 d_scale = 0.5  # Scales sleep to unit of distance
-speed = 60     # Speed at which the treads move
+speed = 100     # Speed at which the treads move
 
 
 def executeTreadInstruction(instruction):
@@ -46,21 +47,21 @@ def executeTreadInstruction(instruction):
     distance = instruction["distance"]
 
     if angle == 0 or angle == 360:
-        print("Moving " + str(distance * 10) + " cm forward.\n")
+        print("Moving " + str(distance * 10) + " cm forward.")
         _forward(distance, speed)
 
     elif angle == 180:
-        print("Moving " + str(distance*10) + " cm backward.\n")
+        print("Moving " + str(distance*10) + " cm backward.")
         _backward(distance, speed)
 
     elif 0 < angle < 180:
-        print("Treads turning " + str(angle) + " degrees right.\n")
+        print("Treads turning " + str(angle) + " degrees right.")
         turn_scale = angle * (2 / 3) * 0.01
         _rightTurn(distance, speed, int(speed * turn_scale))
 
     elif 180 < angle < 360:
         angle -= 180
-        print("Treads turning " + str(angle) + " degrees left.\n")
+        print("Treads turning " + str(angle) + " degrees left.")
         turn_scale = angle* (2 / 3) * 0.01
         _leftTurn(distance, speed, int(speed * turn_scale))
     else:
@@ -72,12 +73,41 @@ def executeTreadInstruction(instruction):
     _motorStop()
 
 
+def test_executeTreadInstruction(instruction):
+    angle = instruction["angle"]
+    distance = instruction["distance"]
+
+    if angle == 0 or angle == 360:
+        print("Moving " + str(distance * 10) + " cm forward.")
+        print(f"Distance: {distance} -- speed: {speed}")
+
+    elif angle == 180:
+        print("Moving " + str(distance*10) + " cm backward.")
+        print(f"Distance: {distance} -- speed: {speed}")
+
+    elif 0 < angle < 180:
+        print("Treads turning " + str(angle) + " degrees right.")
+        turn_scale = angle * (2 / 3) * 0.01
+        print(f"Distance: {distance} -- speed: {speed} -- radius: {int(speed * turn_scale)}")
+
+    elif 180 < angle < 360:
+        angle -= 180
+        print("Treads turning " + str(angle) + " degrees left.")
+        turn_scale = angle* (2 / 3) * 0.01
+        print(f"Distance: {distance} -- speed: {speed} -- radius: {int(speed * turn_scale)}")
+    else:
+        print("invalid angle")
+        raise
+
+    time.sleep(1)
+
+
 def _forward(distance, speed):
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_forward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance*10) + " cm forward.\n")
+    print("Moved " + str(distance*10) + " cm forward.")
 
 
 def _backward(distance, speed):
@@ -85,7 +115,7 @@ def _backward(distance, speed):
     _motorRight(1, right_backward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance*10) + " cm backward.\n")
+    print("Moved " + str(distance*10) + " cm backward.")
 
 
 def _rightTurn(distance, speed, radius):
@@ -93,7 +123,7 @@ def _rightTurn(distance, speed, radius):
     _motorRight(1, right_backward, radius)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Treads turned " + str(radius*3.6) + " degrees right.\n")
+    print("Treads turned " + str(radius*3.6) + " degrees right.")
     pass
 
 
@@ -102,7 +132,7 @@ def _leftTurn(distance, speed, radius):
     _motorRight(1, right_forward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Treads turned " + str(radius*3.6) + " degrees left.\n")
+    print("Treads turned " + str(radius*3.6) + " degrees left.")
     pass
 
 
@@ -218,12 +248,17 @@ if __name__ == '__main__':
         ]
     )
 
-    try:
-        setup()
+    if test is True:
         for movement in instructions["treads"]:
-            print("capture photo")
-            executeTreadInstruction(movement)
-        destroy()
-    except Exception as e:
-        print("Tread exception: %s", e)
-        destroy()
+            print("\ncaptured photo")
+            test_executeTreadInstruction(movement)
+    else:
+        try:
+            setup()
+            for movement in instructions["treads"]:
+                print("\ncaptured photo")
+                executeTreadInstruction(movement)
+            destroy()
+        except Exception as e:
+            print("Tread exception: %s", e)
+            destroy()
