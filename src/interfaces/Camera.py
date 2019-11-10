@@ -14,8 +14,6 @@ from time import sleep
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-#org_pos = L11_ST1
-
 # Setting up Raspberry Pi camera
 camera = PiCamera() # Raspberry Pi Camera
 camera.resolution = (640, 480)
@@ -23,12 +21,17 @@ camera.framerate = 20
 
 class Camera:
 
+
     def take_photo(self):
         camera = PiCamera()
         camera.start_preview()
         sleep(5)
-        camera.capture()
+        camera.capture("/home/pi/Deskop/newImage.jpg")
         camera.stop_preview()
+
+
+
+
 
 
 
