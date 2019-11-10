@@ -6,7 +6,6 @@ from src.interfaces import Camera
 IP = "127.0.0.1"
 PORT = 7001
 
-connection = Connection(IP, PORT)
 camera = None
 treads = Treads()
 arm = None
@@ -16,9 +15,12 @@ while True:
     # img = camera.take_photo()
 
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", None, None, None)
-    connection.send(instr_out.json())
 
+    connection = Connection(IP, PORT)
+    connection.send(instr_out.json())
     msg_in = connection.receive()
+    connection.close();
+    
     instr_in = Instruction(Instruction.FROM_JSON, msg_in)
     status = instr_in.status()
     if instr_in.treads() is not None:
