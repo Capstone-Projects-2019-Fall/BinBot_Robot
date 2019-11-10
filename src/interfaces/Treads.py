@@ -37,13 +37,14 @@ right_backward = 1
 pwn_A = 0
 pwm_B = 0
 
+d_scale = 0.5  # Scales sleep to unit of distance
+
 
 def execute(instructions):
     for e in instructions["treads"]:
         angle = e["angle"]
         distance = e["distance"]
-        distance = distance  # TODO TESTING
-        speed = 50
+        speed = 60
         radius = angle / 360
 
         if angle == 0 or angle == 360:
@@ -72,7 +73,7 @@ def execute(instructions):
 def _forward(distance, speed):
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_forward, speed)
-    time.sleep(distance)
+    time.sleep(distance * d_scale)
     _motorStop()
     print("Moved " + str(distance) + " meters forward.\n")
 
@@ -80,7 +81,7 @@ def _forward(distance, speed):
 def _backward(distance, speed):
     _motorLeft(1, left_backward, speed)
     _motorRight(1, right_backward, speed)
-    time.sleep(distance)
+    time.sleep(distance * d_scale)
     _motorStop()
     print("Moved " + str(distance) + " meters backward.\n")
 
@@ -88,7 +89,7 @@ def _backward(distance, speed):
 def _rightTurn(distance, speed, radius):
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_backward, radius)
-    time.sleep(distance)
+    time.sleep(distance * d_scale)
     _motorStop()
     print("Treads turned " + str(radius*3.6) + " degrees right.\n")
     pass
@@ -97,7 +98,7 @@ def _rightTurn(distance, speed, radius):
 def _leftTurn(distance, speed, radius):
     _motorLeft(1, left_backward, radius)
     _motorRight(1, right_forward, speed)
-    time.sleep(distance)
+    time.sleep(distance * d_scale)
     _motorStop()
     print("Treads turned " + str(radius*3.6) + " degrees left.\n")
     pass
