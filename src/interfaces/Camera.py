@@ -17,7 +17,7 @@ pwm.set_pwm_freq(50)
 # Setting up Raspberry Pi camera
 camera = PiCamera() # Raspberry Pi Camera
 camera.resolution = (640, 480)
-camera.framerate = 20
+#camera.framerate = 20
 
 class Camera:
 
