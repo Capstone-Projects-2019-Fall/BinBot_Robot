@@ -42,8 +42,8 @@ def execute(instructions):
     for e in instructions["treads"]:
         angle = e["angle"]
         distance = e["distance"]
-        distance = distance / 2  # TODO TESTING
-        speed = 100
+        distance = distance  # TODO TESTING
+        speed = 50
         radius = angle / 360
 
         if angle == 0 or angle == 360:
@@ -173,3 +173,34 @@ def _motorLeft(status, direction, speed):  # Motor 1 positive and negative rotat
 def destroy():
     _motorStop()
     GPIO.cleanup()  # Release resource
+
+
+if __name__ == '__main__':
+
+    forward = {"angle": 0,
+               "distance": 1.0
+               }
+
+    backward = {"angle": 180,
+                "distance": 1.0
+                }
+
+    left = {"angle": 270,
+            "distance": 1.0
+            }
+
+    right = {"angle": 90,
+             "distance": 1.0
+             }
+
+    # instructions = dict(treads=[forward, backward, left, right])
+
+    instructions = dict(treads=[forward])
+
+    try:
+        setup()
+        execute(instructions)
+        destroy()
+    except Exception as e:
+        print("Tread exception: %s", e)
+        destroy()
