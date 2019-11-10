@@ -38,38 +38,36 @@ pwn_A = 0
 pwm_B = 0
 
 d_scale = 0.5  # Scales sleep to unit of distance
+speed = 60     # Speed at which the treads move
 
+def executeTreadInstruction(instruction):
+    angle = instruction["angle"]
+    distance = instruction["distance"]
+    radius = angle / 360
+    radius = 0.6  # TODO override for testing
 
-def execute(instructions):
-    for e in instructions["treads"]:
-        angle = e["angle"]
-        distance = e["distance"]
-        speed = 60
-        radius = angle / 360
-        radius = 0.6
+    if angle == 0 or angle == 360:
+        print("Moving " + str(distance * 10) + " cm forward.\n")
+        _forward(distance, speed)
 
-        if angle == 0 or angle == 360:
-            print("forward")
-            _forward(distance, speed)
+    elif angle == 180:
+        print("Moving " + str(distance*10) + " cm backward.\n")
+        _backward(distance, speed)
 
-        elif angle == 180:
-            print("backward")
-            _backward(distance, speed)
+    elif 0 < angle < 180:
+        print("Treads turning " + str(radius*3.6) + " degrees right.\n")
+        _rightTurn(distance, speed, int(speed * radius))
 
-        elif 0 < angle < 180:
-            print("right")
-            _rightTurn(distance, speed, int(speed * radius))
+    elif 180 < angle < 360:
+        print("Treads turning " + str(radius*3.6) + " degrees left.\n")
+        radius -= 0.5
+        _leftTurn(distance, speed, int(speed * radius))
+    else:
+        print("invalid angle")
+        _motorStop()
+        raise
 
-        elif 180 < angle < 360:
-            print("left")
-            radius -= 0.5
-            _leftTurn(distance, speed, int(speed * radius))
-        else:
-            print("invalid angle")
-            _motorStop()
-            raise
-
-        time.sleep(1)
+    time.sleep(1)
     _motorStop()
 
 
@@ -197,16 +195,33 @@ if __name__ == '__main__':
              "distance": 1.0
              }
 
+    # test each
     # instructions = dict(treads=[forward, backward, left, right])
 
     # square
-    instructions = dict(treads=[forward, right, forward, right, forward])
+    # instructions = dict(treads=[forward, right, forward, right, forward])
 
+    # random
     # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
+
+    # eight point patrol
+    instructions = dict(treads=[
+            {"angle": 0, "distance": 1.0},    # move forward 10 cm
+            {"angle": 45, "distance": 1.0},   # turn right 45 degrees 7 times
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 45, "distance": 1.0},
+            {"angle": 180, "distance": 1.0},  # move backwards 10 cm
+        ]
+    )
 
     try:
         setup()
-        execute(instructions)
+        for movement in instructions["treads"]:
+            print("capture photo")
+            executeTreadInstruction(movement)
         destroy()
     except Exception as e:
         print("Tread exception: %s", e)
