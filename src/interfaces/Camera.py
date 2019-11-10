@@ -27,6 +27,7 @@ def take_photo():
 
 if __name__ == '__main__':
     try:
+
         take_photo()
     except Exception as e:
         print("take_photo exception: %s", e)
