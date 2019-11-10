@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from src.interfaces import Camera
 
 import picamera
 import time
