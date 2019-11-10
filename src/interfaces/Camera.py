@@ -14,7 +14,7 @@ from time import sleep
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-org_pos = L11_ST1
+#org_pos = L11_ST1
 
 # Setting up Raspberry Pi camera
 camera = PiCamera() # Raspberry Pi Camera
