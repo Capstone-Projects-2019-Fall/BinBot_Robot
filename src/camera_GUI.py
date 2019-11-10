@@ -2,7 +2,6 @@ from tkinter import *
 from PIL import ImageTk, Image
 from src.interfaces import Camera
 
-from __future__ import division
 import picamera
 import time
 
