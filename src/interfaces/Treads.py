@@ -274,7 +274,7 @@ if __name__ == '__main__':
     instructions = dict(treads=[
         {"angle": 179, "distance": 1.0},  # turn right 179*
         {"angle": 179, "distance": 1.0},  # turn right 179*
-        {"angle": 0, "distance": 15.5},    # move forward 15.5 cm
+        {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
@@ -284,7 +284,7 @@ if __name__ == '__main__':
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
         {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 0, "distance": 15.5},    # move forward 15.5 cm
+        {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
