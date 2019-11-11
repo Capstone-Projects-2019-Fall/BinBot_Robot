@@ -6,6 +6,7 @@ from src.instructions.instruction import Instruction
 
 # from src.interfaces import Treads
 # from src.interfaces import Camera
+from src.interfaces.Treads import executeTreadInstruction
 
 
 def is_json(myjson):
@@ -16,11 +17,10 @@ def is_json(myjson):
     return True
 
 
-IP = "127.0.0.1"
+IP = "10.109.31.89"
 PORT = 7001
 
 camera = None
-# treads = Treads()
 arm = None
 
 while True:
@@ -40,6 +40,6 @@ while True:
         status = instr_in.status()
         if instr_in.treads() is not None:
             print(instr_in.treads())
-            # treads.execute(instr_in.treads())
+            executeTreadInstruction(instr_in.treads()[0])
         else:
             print('No treads')
