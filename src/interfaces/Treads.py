@@ -9,9 +9,9 @@ TODO Check that left and right are mixed up
 """
 
 import time
-# import RPi.GPIO as GPIO  # Linux required!
-# test = False
-test = True
+import RPi.GPIO as GPIO  # Linux required!
+test = False
+# test = True
 
 # motor_EN_A: Pin11  |  motor_EN_B: Pin7
 # motor_A:  Pin13,Pin12    |  motor_B: Pin8,Pin10
