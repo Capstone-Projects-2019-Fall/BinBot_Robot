@@ -214,129 +214,77 @@ def destroy():
 
 if __name__ == '__main__':
 
-    forward = {"angle": 0,
-               "distance": 1.0
-               }
-
-    backward = {"angle": 180,
-                "distance": 1.0
-                }
-
-    left = {"angle": 270,
-            "distance": 1.0
-            }
-
-    right = {"angle": 90,
-             "distance": 1.0
-             }
-
-    # turn right 45 degrees 8 times
-    right_eight_point_patrol = [
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-            {"angle": 45, "distance": 1.0},
-    ]
-
-    # turn left 45 degrees 8 times
-    left_eight_point_patrol = [
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-            {"angle": 225, "distance": 1.0},
-    ]
-
     # test each
-    # instructions = dict(treads=[forward, backward, left, right])
+    test_four = dict(treads=[
+        {"angle": 0, "distance": 1.0},
+        {"angle": 180, "distance": 1.0},
+        {"angle": 270, "distance": 1.0},
+        {"angle": 90, "distance": 1.0}
+    ])
 
-    # square
-    # instructions = dict(treads=[forward, right, forward, right, forward])
-
-    # random
-    # instructions = dict(treads=[forward, right, right, forward, left, left, forward, backward])
-
-    # # eight point patrol test
-    # instructions = dict(treads=[
-    #         {"angle": 0, "distance": 1.0},    # move forward 10 cm
-    #         right_eight_point_patrol,         # right 8 point patrol
-    #         {"angle": 180, "distance": 1.0},  # move backwards 10 cm
-    #     ]
-    # )
-
-    # # # full demo patrol
-    # instructions = dict(treads=[
-    #     {"angle": 179, "distance": 1.0},  # turn right 179*
-    #     {"angle": 179, "distance": 1.0},  # turn right 179*
-    #     {"angle": 0, "distance": 0.775},  # move forward 7.75 cm
-    #     {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     {"angle": 0, "distance": 0.775},  # move forward 7.75 cm
-    #     {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
-    #     {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
-    #     {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
-    #     {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},
-    #     {"angle": 225, "distance": 1.0},  # turn left 45*
-    #     {"angle": 180, "distance": 1.1},  # move backwards 11 cm
-    #     {"angle": 225, "distance": 1.0},  # turn left 45*
-    #     {"angle": 270, "distance": 1.0},  # turn left 90*
-    #     {"angle": 270, "distance": 1.0},  # turn left 90*
-    #     {"angle": 270, "distance": 1.0}   # turn left 90*
-    # ])
-    #
-    # import json
-    # json_str = json.dumps(instructions)
+    # full demo patrol that moves to 5 different spots
+    five_node_patrol = dict(treads=[
+        {"angle": 179, "distance": 1.0},  # turn right 179*
+        {"angle": 179, "distance": 1.0},  # turn right 179*
+        {"angle": 0, "distance": 0.775},  # move forward 7.75 cm
+        {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 0, "distance": 0.775},  # move forward 7.75 cm
+        {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
+        {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
+        {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 0, "distance": 1.55},   # move forward 15.5 cm
+        {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},  # turn left 45*
+        {"angle": 180, "distance": 1.1},  # move backwards 11 cm
+        {"angle": 225, "distance": 1.0},  # turn left 45*
+        {"angle": 270, "distance": 1.0},  # turn left 90*
+        {"angle": 270, "distance": 1.0},  # turn left 90*
+        {"angle": 270, "distance": 1.0}   # turn left 90*
+    ])
 
     # tri demo patrol
-    instructions = dict(treads=[
+    triangle_patrol = dict(treads=[
         {"angle": 45, "distance": 1.0},    # turn right 45 degrees 8 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
@@ -372,37 +320,30 @@ if __name__ == '__main__':
         {"angle": 225, "distance": 1.0}    # turn left 45*
     ])
 
-    # # calibrations
-    # instructions = dict(treads=[
-    #
-    #     # {"angle": 0, "distance": 1.55},
-    #
-    #     {"angle": 45, "distance": 1.0},     # turn right 45 degrees 8 times
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #     {"angle": 45, "distance": 1.0},
-    #
-    #
-    #     #
-    #     # {"angle": 45, "distance": 1.0},
-    #     # {"angle": 45, "distance": 1.0},
-    #     # {"angle": 45, "distance": 1.0},
-    #     # {"angle": 45, "distance": 1.0},
-    #
-    #     # {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     # {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     #
-    #     # {"angle": 0, "distance": 1.55},
-    #
-    #
-    #     # {"angle": 90, "distance": 1.0},   # turn right 90*
-    #     # {"angle": 90, "distance": 1.0},   # turn right 90*
-    #
-    #     # {"angle": 179, "distance": 1.0},  # turn right 179*
-    #     # {"angle": 179, "distance": 1.0},  # turn right 179*
-    #
-    #
-    # ])
+    # instructions to calibrate treads for the current terrain
+    calibrate = dict(treads=[
+        # 45* test
+        {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        # 90* test
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        {"angle": 90, "distance": 1.0},   # turn right 90*
+        # 179* test
+        {"angle": 179, "distance": 1.0},  # turn right 179*
+        {"angle": 179, "distance": 1.0},  # turn right 179*
+    ])
+
+    instructions = triangle_patrol
 
     if test is True:
         for movement in instructions["treads"]:
