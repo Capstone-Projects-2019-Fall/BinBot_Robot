@@ -9,9 +9,9 @@ TODO Check that left and right are mixed up
 """
 
 import time
-import RPi.GPIO as GPIO  # Linux required!
-test = False
-# test = True
+# import RPi.GPIO as GPIO  # Linux required!
+# test = False
+test = True
 
 # motor_EN_A: Pin11  |  motor_EN_B: Pin7
 # motor_A:  Pin13,Pin12    |  motor_B: Pin8,Pin10
@@ -274,7 +274,7 @@ if __name__ == '__main__':
     instructions = dict(treads=[
         {"angle": 179, "distance": 1.0},  # turn right 179*
         {"angle": 179, "distance": 1.0},  # turn right 179*
-        {"angle": 0, "distance": 0.5},    # move forward 5 cm
+        {"angle": 0, "distance": 15.5},    # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
@@ -284,7 +284,7 @@ if __name__ == '__main__':
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
         {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 0, "distance": 0.5},    # move forward 5 cm
+        {"angle": 0, "distance": 15.5},    # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},   # turn right 45 degrees 8 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
@@ -294,7 +294,7 @@ if __name__ == '__main__':
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
         {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 0, "distance": 1.0},    # move forward 10 cm
+        {"angle": 0, "distance": 3.1},    # move forward 31 cm
         {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
@@ -304,7 +304,7 @@ if __name__ == '__main__':
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
         {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 0, "distance": 1.0},    # move forward 10 cm
+        {"angle": 0, "distance": 3.1},    # move forward 31 cm
         {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
@@ -314,7 +314,7 @@ if __name__ == '__main__':
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
         {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 0, "distance": 1.0},    # move forward 10 cm
+        {"angle": 0, "distance": 3.1},    # move forward 31 cm
         {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
@@ -324,10 +324,11 @@ if __name__ == '__main__':
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},
         {"angle": 225, "distance": 1.0},  # turn left 45*
-        {"angle": 180, "distance": 0.7},  # move backwards 7 cm
+        {"angle": 180, "distance": 2.2},  # move backwards 22 cm
         {"angle": 225, "distance": 1.0},  # turn left 45*
         {"angle": 270, "distance": 1.0},  # turn left 90*
-        {"angle": 179, "distance": 1.0},  # turn right 179*
+        {"angle": 270, "distance": 1.0},  # turn left 90*
+        {"angle": 270, "distance": 1.0}   # turn left 90*
     ])
 
 
