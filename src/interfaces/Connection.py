@@ -3,7 +3,7 @@
 import socket
 
 
-JAVA_INT_BYTES = 4
+JAVA_INT_BYTES = 1
 ACK = b'\x01'
 ACK_BYTES = 1
 ENDIAN = "big"
