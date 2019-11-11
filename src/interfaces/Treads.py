@@ -369,13 +369,29 @@ if __name__ == '__main__':
 
     # # tri demo patrol
     instructions = dict(treads=[
-        # right 8 point patrol
-        # turn left 45*
-        # forward 15.5 cm
-        # left 8 point patrol
-        # turn right 45*
-        # forward 15.5 cm
-        # right 8 point patrol
+        {"angle": 45, "distance": 1.0},     # turn right 45 degrees 8 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},  # turn left 45*
+        {"angle": 0, "distance": 1.55},   # forward 15.5 cm
+        {"angle": 225, "distance": 1.0},  # turn left 45 degrees 8 times
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},  # turn right 45*
+        {"angle": 0, "distance": 1.55},     # forward 15.5 cm
+        {"angle": 45, "distance": 1.0},     # turn right 45 degrees 8 times
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 45, "distance": 1.0},
+        {"angle": 225, "distance": 1.0},  # turn left 45*
+        {"angle": 180, "distance": 1.55},  # move backwards 15.5cm
+        {"angle": 225, "distance": 1.0},  # turn left 45*
     ])
 
     if test is True:
