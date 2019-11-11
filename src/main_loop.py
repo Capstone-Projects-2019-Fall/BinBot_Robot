@@ -37,8 +37,15 @@ while True:
         status = instr_in.status()
         if instr_in.treads() is not None:
             print(instr_in.treads())
-            for movement in instr_in.treads():
-                Treads.executeTreadInstruction(movement)
-                print()
+            try:
+                Treads.setup()
+                for movement in instr_in.treads():
+                    Treads.executeTreadInstruction(movement)
+                    print()
+                Treads.destroy()
+            except Exception as e:
+                print("Tread exception: %s", e)
+                Treads.destroy()
+
         else:
             print('No treads')
