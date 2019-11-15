@@ -4,7 +4,6 @@ BinBot Tread module to provide control interface to robot kit's mechanical tread
 Author: Sean Reddington
 Date: 2019/11/8
 
-TODO Check that left and right are mixed up
 
 """
 
@@ -45,6 +44,11 @@ sleep_bias = -0.025   # Scales the sleep time based on friction of terrain
 
 
 def executeTreadInstruction(instruction):
+    """
+    Will invoke the tread function associated with the action the instruction contains.
+    :param instruction: dictionary describing angle and distance for treads to move
+    :return:
+    """
     angle = instruction["angle"]
     distance = instruction["distance"]
 
@@ -76,6 +80,11 @@ def executeTreadInstruction(instruction):
 
 
 def test_executeTreadInstruction(instruction):
+    """
+    Prototype function that prints the actions invoked by the passed instructions for testing purposes.
+    :param instruction: instruction: dictionary describing angle and distance for treads to move
+    :return:
+    """
     angle = instruction["angle"]
     distance = instruction["distance"]
 
@@ -107,6 +116,12 @@ def test_executeTreadInstruction(instruction):
 
 
 def _forward(distance):
+    """
+    This function is used to invoke the treads on BinBot. Calling this method will make BinBot
+     move in a forward direction.
+    :param distance: distance to move forward; 1.0 units = ~ 10 cm
+    :return:
+    """
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_forward, speed)
     time.sleep(distance * d_scale)
@@ -115,6 +130,12 @@ def _forward(distance):
 
 
 def _backward(distance):
+    """
+    This function is used to invoke the treads on BinBot. Calling this method will make BinBot
+     move in a backward direction.
+    :param distance: distance to move forward; 1.0 units = ~ 10 cm
+    :return:
+    """
     _motorLeft(1, left_backward, speed)
     _motorRight(1, right_backward, speed)
     time.sleep(distance * d_scale)
@@ -123,6 +144,13 @@ def _backward(distance):
 
 
 def _rightTurn(distance, t_scale):
+    """
+    This function is used to invoke the treads on BinBot. Calling this method will make
+     BinBot’s treads make a right turn.
+    :param distance: distance to move forward; 1.0 units = ~ 10 cm
+    :param t_scale: turn scale to convert turn angle to a drop in power to a motor.
+    :return:
+    """
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_backward, int(speed * slide_bias))
     time.sleep(distance * t_scale - sleep_bias)
@@ -132,6 +160,13 @@ def _rightTurn(distance, t_scale):
 
 
 def _leftTurn(distance, t_scale):
+    """
+    This function is used to invoke the treads on BinBot. Calling this method will make
+     BinBot’s treads make a left turn.
+    :param distance: distance to move forward; 1.0 units = ~ 10 cm
+    :param t_scale: turn scale to convert turn angle to a drop in power to a motor.
+    :return:
+    """
     _motorLeft(1, left_backward, int(speed * slide_bias))
     _motorRight(1, right_forward, speed)
     time.sleep(distance * t_scale - sleep_bias)
@@ -141,7 +176,11 @@ def _leftTurn(distance, t_scale):
 
 
 def setup():
-    # Motor initialization
+    """
+    Initializes the tread motors' configurations with GPIO.
+    :return:
+    """
+
     global pwm_A, pwm_B
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
@@ -161,6 +200,10 @@ def setup():
 
 
 def _motorStop():
+    """
+    Halts power output to tread motors.
+    :return:
+    """
     # Motor stops
     GPIO.output(Motor_A_Pin1, GPIO.LOW)
     GPIO.output(Motor_A_Pin2, GPIO.LOW)
@@ -170,7 +213,14 @@ def _motorStop():
     GPIO.output(Motor_B_EN, GPIO.LOW)
 
 
-def _motorRight(status, direction, mod_speed):  # Motor 2 positive and negative rotation
+def _motorRight(status, direction, mod_speed):
+    """
+    Applies positive and negative rotation to the right tread motor.
+    :param status: boolean power status
+    :param direction: forward/backward direction for tread to move.
+    :param mod_speed: modified speed for the neg. rotation tread based on the turn scale
+    :return:
+    """
     if status == 0:  # stop
         GPIO.output(Motor_B_Pin1, GPIO.LOW)
         GPIO.output(Motor_B_Pin2, GPIO.LOW)
@@ -188,7 +238,14 @@ def _motorRight(status, direction, mod_speed):  # Motor 2 positive and negative 
             pwm_B.ChangeDutyCycle(mod_speed)
 
 
-def _motorLeft(status, direction, mod_speed):  # Motor 1 positive and negative rotation
+def _motorLeft(status, direction, mod_speed):
+    """
+    Applies positive and negative rotation to the left tread motor.
+    :param status: boolean power status
+    :param direction: forward/backward direction for tread to move.
+    :param mod_speed: modified speed for the neg. rotation tread based on the turn scale
+    :return:
+    """
     if status == 0:  # stop
         GPIO.output(Motor_A_Pin1, GPIO.LOW)
         GPIO.output(Motor_A_Pin2, GPIO.LOW)
@@ -208,8 +265,12 @@ def _motorLeft(status, direction, mod_speed):  # Motor 1 positive and negative r
 
 
 def destroy():
+    """
+    Function to stop tread motor I/O and release resources
+    :return:
+    """
     _motorStop()
-    GPIO.cleanup()  # Release resource
+    GPIO.cleanup()
 
 
 if __name__ == '__main__':
