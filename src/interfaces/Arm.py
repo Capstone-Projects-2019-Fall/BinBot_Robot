@@ -28,10 +28,29 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, L13_ST1)
 
 
-def hand_pos(pos):    # Believe to control the claw rotation
+def hand_pos(pos):  # Believe to control the claw rotation
     if pos <= 4:
         pwm.set_pwm(12, 0, L12_ST1 - 30 * pos)
         pwm.set_pwm(13, 0, L13_ST1 - 30 * pos)
     else:
         pwm.set_pwm(12, 0, (L12_ST1 - 24 * pos))
         pwm.set_pwm(13, 0, L13_ST3 - 6 * (pos - 4))
+
+
+def clean_all():
+    pwm.set_pwm(0, 0, 0)
+    pwm.set_pwm(1, 0, 0)
+    pwm.set_pwm(2, 0, 0)
+    pwm.set_pwm(3, 0, 0)
+    pwm.set_pwm(4, 0, 0)
+    pwm.set_pwm(5, 0, 0)
+    pwm.set_pwm(6, 0, 0)
+    pwm.set_pwm(7, 0, 0)
+    pwm.set_pwm(8, 0, 0)
+    pwm.set_pwm(9, 0, 0)
+    pwm.set_pwm(10, 0, 0)
+    pwm.set_pwm(11, 0, 0)
+    pwm.set_pwm(12, 0, 0)
+    pwm.set_pwm(13, 0, 0)
+    pwm.set_pwm(14, 0, 0)
+    pwm.set_pwm(15, 0, 0)
