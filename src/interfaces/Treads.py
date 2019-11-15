@@ -39,8 +39,8 @@ pwm_B = 0
 
 d_scale = 0.5         # Scales sleep to unit of distance
 speed = 100           # Speed at which the treads move
-slide_bias = 0.90     # Scales the speed of the counter turning tread based on friction of terrain
-sleep_bias = -0.025   # Scales the sleep time based on friction of terrain
+slide_bias = 0.85     # Scales the speed of the counter turning tread based on friction of terrain
+sleep_bias = 0.90      # Scales the sleep time based on friction of terrain
 
 
 def executeTreadInstruction(instruction):
@@ -153,7 +153,7 @@ def _rightTurn(distance, t_scale):
     """
     _motorLeft(1, left_forward, speed)
     _motorRight(1, right_backward, int(speed * slide_bias))
-    time.sleep(distance * t_scale - sleep_bias)
+    time.sleep((distance * t_scale) * sleep_bias)
     _motorStop()
     print("Treads turned " + str(t_scale*100) + " degrees right.")
     pass
@@ -169,7 +169,7 @@ def _leftTurn(distance, t_scale):
     """
     _motorLeft(1, left_backward, int(speed * slide_bias))
     _motorRight(1, right_forward, speed)
-    time.sleep(distance * t_scale - sleep_bias)
+    time.sleep((distance * t_scale) * sleep_bias)
     _motorStop()
     print("Treads turned " + str(t_scale*100) + " degrees left.")
     pass
@@ -384,27 +384,27 @@ if __name__ == '__main__':
     # instructions to calibrate treads for the current terrain
     calibrate = dict(treads=[
         # 45* test
-        {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        #{"angle": 0, "distance": 1.55},  # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
-        {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
-        {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
-        {"angle": 45, "distance": 1.0},
-        {"angle": 45, "distance": 1.0},
-        {"angle": 45, "distance": 1.0},
+        #{"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        #{"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
+        #{"angle": 45, "distance": 1.0},
+        #{"angle": 45, "distance": 1.0},
+        #{"angle": 45, "distance": 1.0},
         # 90* test
-        {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 90, "distance": 1.0},   # turn right 90*
-        {"angle": 90, "distance": 1.0},   # turn right 90*
+        #{"angle": 90, "distance": 1.0},   # turn right 90*
+        #{"angle": 90, "distance": 1.0},   # turn right 90*
+        #{"angle": 90, "distance": 1.0},   # turn right 90*
+        #{"angle": 90, "distance": 1.0},   # turn right 90*
         # 179* test
-        {"angle": 179, "distance": 1.0},  # turn right 179*
-        {"angle": 179, "distance": 1.0},  # turn right 179*
+        #{"angle": 179, "distance": 1.0},  # turn right 179*
+        #{"angle": 179, "distance": 1.0},  # turn right 179*
     ])
 
-    instructions = triangle_patrol
+    instructions = calibrate
 
     if test is True:
         for movement in instructions["treads"]:
