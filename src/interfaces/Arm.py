@@ -37,6 +37,10 @@ def hand_pos(pos):  # Believe to control the claw rotation
         pwm.set_pwm(13, 0, L13_ST3 - 6 * (pos - 4))
 
 
+def catch(pos):
+    pwm.set_pwm(15, 0, L15_ST2 + 10 * pos)
+
+
 def clean_all():
     pwm.set_pwm(0, 0, 0)
     pwm.set_pwm(1, 0, 0)
@@ -54,3 +58,14 @@ def clean_all():
     pwm.set_pwm(13, 0, 0)
     pwm.set_pwm(14, 0, 0)
     pwm.set_pwm(15, 0, 0)
+
+
+if __name__ == '__main__':
+    try:
+        hand('in')
+        time.sleep(5)
+        hand('in')
+        hand('in')
+
+    except KeyboardInterrupt:
+        clean_all()
