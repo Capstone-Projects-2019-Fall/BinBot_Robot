@@ -53,7 +53,7 @@ class Instruction:
 
     @staticmethod
     def __img_to_string(img):
-        return ''
+        return str(img)
 
     def status(self):
         return self.__status

@@ -22,6 +22,7 @@ def init_camera():
     camera.framerate = 30
     return camera
 
+
 def take_photo():
     camera = picamera.PiCamera()
     camera.resolution = (1280, 720)
@@ -33,8 +34,9 @@ def take_photo():
     print("Finished taking a photo")
     camera.stop_preview()
 
-def capture_img_stream():
-    with init_camera() as camera:
+
+def capture_img_stream(camera):
+    with camera:
         camera.start_preview()
         # Camera warm-up time
         time.sleep(2)
