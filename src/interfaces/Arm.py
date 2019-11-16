@@ -40,27 +40,27 @@ org_pos = L11_ST1
 
 def hand(command):  # Control the arm movements in and out
     if command == 'in':
-        pwm.set_pwm(13, 0, L13_ST3)
-        pwm.set_pwm(12, 0, L12_ST4)
+        pwm.set_pwm(13, 0, 298)
+        pwm.set_pwm(12, 0, 120)
         time.sleep(0.5)
-        pwm.set_pwm(13, 0, L13_ST2)
-        pwm.set_pwm(12, 0, L12_ST2)
+        pwm.set_pwm(13, 0, 227)
+        pwm.set_pwm(12, 0, 131)
     elif command == 'out':
-        pwm.set_pwm(12, 0, L12_ST1)
-        pwm.set_pwm(13, 0, L13_ST1)
+        pwm.set_pwm(12, 0, 430)
+        pwm.set_pwm(13, 0, 429)
 
 
 def hand_pos(pos):  # Believe to control the claw rotation
     if pos <= 4:
-        pwm.set_pwm(12, 0, L12_ST1 - 30 * pos)
-        pwm.set_pwm(13, 0, L13_ST1 - 30 * pos)
+        pwm.set_pwm(12, 0, 430 - 30 * pos)
+        pwm.set_pwm(13, 0, 429 - 30 * pos)
     else:
-        pwm.set_pwm(12, 0, (L12_ST1 - 24 * pos))
-        pwm.set_pwm(13, 0, L13_ST3 - 6 * (pos - 4))
+        pwm.set_pwm(12, 0, (430 - 24 * pos))
+        pwm.set_pwm(13, 0, 298 - 6 * (pos - 4))
 
 
 def catch(pos):
-    pwm.set_pwm(15, 0, L15_ST2 + 10 * pos)
+    pwm.set_pwm(15, 0, 194 + 10 * pos)
 
 
 def clean_all():
