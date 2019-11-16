@@ -15,28 +15,6 @@ import Adafruit_PCA9685
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-'''
-def num_import_int(initial):  # Call this function to import data from '.txt' file
-    global r
-    with open("C:\Users\Silva_Surfer\Desktop\BinBot_Robot\src\interfaces\config.txt") as f:
-        for line in f.readlines():
-            if (line.find(initial) == 0):
-                r = line
-    begin = len(list(initial))
-    snum = r[begin:]
-    n = int(snum)
-    return n
-print('Loading...')
-for i in range(0, 16):
-    exec('L%d_MAX=num_import_int("L%d_MAX:")' % (i, i))
-    exec('L%d_MIN=num_import_int("L%d_MIN:")' % (i, i))
-    for n in range(1, 11):
-        exec('L%d_ST%d=num_import_int("L%d_ST%d:")' % (i, n, i, n))
-print('Setting up server...')
-
-org_pos = L11_ST1
-'''
-
 
 def hand(command):  # Control the arm movements in and out
     if command == 'in':
