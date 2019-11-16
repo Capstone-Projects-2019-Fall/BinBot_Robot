@@ -4,6 +4,8 @@
 # Description: Camera functionality
 
 from __future__ import division
+
+import base64
 import picamera
 import picamera.array
 import cv2
@@ -44,14 +46,39 @@ def capture_img_stream(camera):
             camera.capture(stream, format='bgr')
             # At this point the image is available as stream.array
             image = stream.array
+
+            encoded, buffer = cv2.imencode('.jpg', image)
+            jpg_as_text = base64.b64encode(buffer)
+            print("jpg as text: %s", jpg_as_text)
             return image
 
 
 if __name__ == '__main__':
+
+    from src.interfaces.Connection import Connection
+    from src.instructions.instruction import Instruction
+    from src.interfaces import Camera
+
+    Jose_laptop = "192.168.43.116"
+    SeanR_laptop = "192.168.43.156"
+    SeanD_laptop = "192.168.43.68"
+
+    IP = SeanR_laptop
+    PORT = 7001
+
+    camera = Camera.init_camera()
     try:
         # take_photo()
-        cv2.imshow("Image", capture_img_stream())
-        cv2.waitKey(0)
+        # cv2.imshow("Image", capture_img_stream())
+        # cv2.waitKey(0)
+        img = Camera.capture_img_stream(camera)
+
+        instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
+
+        connection = Connection(IP, PORT)
+        connection.send(instr_out.json())
+        msg_in = connection.receive()
+        connection.close()
     except Exception as e:
         print("take_photo exception: %s", e)
 

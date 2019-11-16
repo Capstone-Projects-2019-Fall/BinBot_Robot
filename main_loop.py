@@ -30,7 +30,7 @@ while True:
     # img = camera.take_photo()
     img = Camera.capture_img_stream(camera)
 
-    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
+    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", None, None, None)
 
     connection = Connection(IP, PORT)
     connection.send(instr_out.json())
@@ -38,20 +38,20 @@ while True:
     connection.close()
 
     print(msg_in)
-    # if is_json(msg_in):
-    #     instr_in = Instruction(Instruction.FROM_JSON, msg_in)
-    #     status = instr_in.status()
-    #     if instr_in.treads() is not None:
-    #         print(instr_in.treads())
-    #         try:
-    #             Treads.setup()
-    #             for movement in instr_in.treads():
-    #                 Treads.executeTreadInstruction(movement)
-    #                 print()
-    #             Treads.destroy()
-    #         except Exception as e:
-    #             print("Tread exception: %s", e)
-    #             Treads.destroy()
-    #
-    #     else:
-    #         print('No treads')
+    if is_json(msg_in):
+        instr_in = Instruction(Instruction.FROM_JSON, msg_in)
+        status = instr_in.status()
+        if instr_in.treads() is not None:
+            print(instr_in.treads())
+            try:
+                Treads.setup()
+                for movement in instr_in.treads():
+                    Treads.executeTreadInstruction(movement)
+                    print()
+                Treads.destroy()
+            except Exception as e:
+                print("Tread exception: %s", e)
+                Treads.destroy()
+
+        else:
+            print('No treads')
