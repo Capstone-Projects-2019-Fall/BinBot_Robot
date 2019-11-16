@@ -384,24 +384,24 @@ if __name__ == '__main__':
     # instructions to calibrate treads for the current terrain
     calibrate = dict(treads=[
         # 45* test
-        #{"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        # {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
         {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
         {"angle": 45, "distance": 1.0},
-        #{"angle": 0, "distance": 1.55},  # move forward 15.5 cm
-        #{"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
-        #{"angle": 45, "distance": 1.0},
-        #{"angle": 45, "distance": 1.0},
-        #{"angle": 45, "distance": 1.0},
+        # {"angle": 0, "distance": 1.55},  # move forward 15.5 cm
+        # {"angle": 45, "distance": 1.0},  # turn right 45 degrees 4 times
+        # {"angle": 45, "distance": 1.0},
+        # {"angle": 45, "distance": 1.0},
+        # {"angle": 45, "distance": 1.0},
         # 90* test
-        #{"angle": 90, "distance": 1.0},   # turn right 90*
-        #{"angle": 90, "distance": 1.0},   # turn right 90*
-        #{"angle": 90, "distance": 1.0},   # turn right 90*
-        #{"angle": 90, "distance": 1.0},   # turn right 90*
+        # {"angle": 90, "distance": 1.0},   # turn right 90*
+        # {"angle": 90, "distance": 1.0},   # turn right 90*
+        # {"angle": 90, "distance": 1.0},   # turn right 90*
+        # {"angle": 90, "distance": 1.0},   # turn right 90*
         # 179* test
-        #{"angle": 179, "distance": 1.0},  # turn right 179*
-        #{"angle": 179, "distance": 1.0},  # turn right 179*
+        # {"angle": 179, "distance": 1.0},  # turn right 179*
+        # {"angle": 179, "distance": 1.0},  # turn right 179*
     ])
 
     instructions = calibrate
