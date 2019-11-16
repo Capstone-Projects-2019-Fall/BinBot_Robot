@@ -65,7 +65,6 @@ if __name__ == '__main__':
 
 
         pos_input = 0
-        arm_command = ''
         OUT = 1
         while 1:
             a = input()
@@ -74,23 +73,23 @@ if __name__ == '__main__':
             if OUT == 1:
                 if pos_input < 13:
                     pos_input += 1
+                elif pos_input == 'in':
+                    hand('in')
+                elif pos_input == 'out':
+                    hand('out')
                 else:
                     print('MAX')
                     OUT = 0
-                if arm_command == 'in':
-                    hand('in')
-                elif arm_command == 'out':
-                    hand('out')
             else:
                 if pos_input > 1:
                     pos_input -= 1
+                elif pos_input == 'in':
+                    hand('in')
+                elif pos_input == 'out':
+                    hand('out')
                 else:
                     print('MIN')
                     OUT = 1
-                if arm_command == 'in':
-                    hand('in')
-                elif arm_command == 'out':
-                    hand('out')
             catch(pos_input)
             print(pos_input)
 
