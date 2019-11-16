@@ -5,6 +5,7 @@
 
 from __future__ import division
 import picamera
+import picamera.array
 import cv2
 import time
 
