@@ -111,6 +111,13 @@ def clean_all():
 
 if __name__ == '__main__':
     try:
+
+        hand('in')
+        time.sleep(3)
+        hand('in')
+        time.sleep(3)
+        hand('in')
+
         pos_input = 0
         OUT = 1
         while 1:
