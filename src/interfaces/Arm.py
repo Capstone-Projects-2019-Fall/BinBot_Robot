@@ -63,28 +63,34 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        hand('in')
-        time.sleep(3)
-        hand('in')
-        time.sleep(3)
-        hand('in')
-            
+
         pos_input = 0
+        arm_command = ''
         OUT = 1
         while 1:
             a = input()
+
+
             if OUT == 1:
                 if pos_input < 13:
                     pos_input += 1
                 else:
                     print('MAX')
                     OUT = 0
+                if arm_command == 'in':
+                    hand('in')
+                elif arm_command == 'out':
+                    hand('out')
             else:
                 if pos_input > 1:
                     pos_input -= 1
                 else:
                     print('MIN')
                     OUT = 1
+                if arm_command == 'in':
+                    hand('in')
+                elif arm_command == 'out':
+                    hand('out')
             catch(pos_input)
             print(pos_input)
 
