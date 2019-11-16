@@ -15,10 +15,10 @@ import Adafruit_PCA9685
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-
+'''
 def num_import_int(initial):  # Call this function to import data from '.txt' file
     global r
-    with open("//etc/config.txt") as f:
+    with open("C:\Users\Silva_Surfer\Desktop\BinBot_Robot\src\interfaces\config.txt") as f:
         for line in f.readlines():
             if (line.find(initial) == 0):
                 r = line
@@ -26,8 +26,6 @@ def num_import_int(initial):  # Call this function to import data from '.txt' fi
     snum = r[begin:]
     n = int(snum)
     return n
-
-
 print('Loading...')
 for i in range(0, 16):
     exec('L%d_MAX=num_import_int("L%d_MAX:")' % (i, i))
@@ -37,6 +35,7 @@ for i in range(0, 16):
 print('Setting up server...')
 
 org_pos = L11_ST1
+'''
 
 
 def hand(command):  # Control the arm movements in and out
@@ -85,10 +84,25 @@ def clean_all():
 
 if __name__ == '__main__':
     try:
-        hand('in')
-        time.sleep(5)
-        hand('in')
-        hand('in')
+        pos_input = 0
+        OUT = 1
+        while 1:
+            a = input()
+            if OUT == 1:
+                if pos_input < 13:
+                    pos_input += 1
+                else:
+                    print('MAX')
+                    OUT = 0
+            else:
+                if pos_input > 1:
+                    pos_input -= 1
+                else:
+                    print('MIN')
+                    OUT = 1
+            catch(pos_input)
+            print(pos_input)
 
+            pass
     except KeyboardInterrupt:
         clean_all()
