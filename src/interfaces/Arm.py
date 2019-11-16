@@ -69,9 +69,9 @@ if __name__ == '__main__':
         while 1:
             a = input()
 
-            if pos_input == 1:
+            if a == 1:
                 hand('in')
-            elif pos_input == 2:
+            elif a == 2:
                 hand('out')
 
          #   if OUT == 1:
