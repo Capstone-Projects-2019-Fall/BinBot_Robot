@@ -18,8 +18,8 @@ pwm.set_pwm_freq(50)
 
 def hand(command):  # Control the arm movements in and out
     if command == 'in':
-        pwm.set_pwm(13, 0, 298)
-        pwm.set_pwm(12, 0, 120)
+        pwm.set_pwm(13, 0, 100)
+        pwm.set_pwm(12, 0, 50)
         time.sleep(3)
         pwm.set_pwm(13, 0, 227)
         pwm.set_pwm(12, 0, 131)
@@ -41,7 +41,7 @@ def hand(command):  # Control the arm movements in and out
        # time.sleep(1)
         pwm.set_pwm(12, 0, 400)
         pwm.set_pwm(13, 0, 399)
-        time.sleep(1)
+      # time.sleep(1)
         pwm.set_pwm(13, 0, 100)
 
 
