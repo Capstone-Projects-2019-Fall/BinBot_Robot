@@ -18,11 +18,11 @@ pwm.set_pwm_freq(50)
 
 def hand(command):  # Control the arm movements in and out
     if command == 'in':
-        pwm.set_pwm(13, 0, 100)
+        pwm.set_pwm(13, 0, 75)
         pwm.set_pwm(12, 0, 50)
         time.sleep(3)
-        pwm.set_pwm(13, 0, 227)
-        pwm.set_pwm(12, 0, 131)
+        pwm.set_pwm(13, 0, 200)
+        pwm.set_pwm(12, 0, 150)
     elif command == 'out':
         #pwm.set_pwm(12, 0, 130)
         #pwm.set_pwm(13, 0, 129)
@@ -43,6 +43,7 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 399)
       # time.sleep(1)
         pwm.set_pwm(13, 0, 100)
+        time.sleep(10)
 
 
 def hand_pos(pos):  # Believe to control the claw rotation
