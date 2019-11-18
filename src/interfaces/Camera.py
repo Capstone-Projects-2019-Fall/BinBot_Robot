@@ -41,15 +41,17 @@ def capture_img_stream(camera):
     with camera:
         camera.start_preview()
         # Camera warm-up time
-        time.sleep(2)
+        time.sleep(1)
         with picamera.array.PiRGBArray(camera) as stream:
             camera.capture(stream, format='bgr')
             # At this point the image is available as stream.array
             image = stream.array
 
-            encoded, buffer = cv2.imencode('.jpg', image)
-            jpg_as_text = base64.b64encode(buffer)
-            print("jpg as text: %s", jpg_as_text)
+            # encoded, buffer = cv2.imencode('.jpg', image)
+            # jpg_as_text = base64.b64encode(buffer)
+            # print("jpg as text: %s", jpg_as_text)
+            # print("img: %s", image)
+
             return image
 
 
@@ -60,6 +62,4 @@ if __name__ == '__main__':
         cv2.waitKey(0)
     except Exception as e:
         print("take_photo exception: %s", e)
-
-
 

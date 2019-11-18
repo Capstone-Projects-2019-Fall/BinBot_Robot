@@ -20,7 +20,10 @@ class TestInstruction(unittest.TestCase):
 
     def test_execute(self):
         try:
-            img = Camera.capture_img_stream(self.camera)
+            # img = Camera.capture_img_stream(self.camera)
+
+            import json
+            img = json.dumps(Camera.capture_img_stream(self.camera))
 
             instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
