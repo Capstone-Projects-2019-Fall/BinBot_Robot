@@ -84,6 +84,8 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
+        hand_pos(8) 
+
         hand('in')
         pos_input = 0
         OUT = 1
