@@ -52,7 +52,7 @@ def cir_pos(pos): # Controls the rotation of the claw
     pwm.set_pwm(14, 0, 350 + 30 * pos) # pos = 5 to get 90 degree
 
 def cir_back():
-    pwm.set_pwm(14, 0, 0)
+    pwm.set_pwm(14, 0, 290)
 
 def clean_all():
     pwm.set_pwm(0, 0, 0)
