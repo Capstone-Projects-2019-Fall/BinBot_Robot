@@ -49,7 +49,7 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 100)
 
 
-def hand_pos(pos):  # Believe to control the claw rotation
+def hand_pos(pos):
     if pos <= 4:
         pwm.set_pwm(12, 0, 430 - 30 * pos)
         pwm.set_pwm(13, 0, 429 - 30 * pos)
@@ -60,6 +60,9 @@ def hand_pos(pos):  # Believe to control the claw rotation
 
 def catch(pos): # Controls the claw of the robot
     pwm.set_pwm(15, 0, 194 + 10 * pos)
+
+def cir_pos(pos): # Controls the rotation of the claw
+    pwm.set_pwm(14, 0, 108 + 30 * pos)
 
 
 def clean_all():
@@ -84,7 +87,7 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        hand_pos(8) 
+        hand_pos(8)
 
         hand('in')
         pos_input = 0
