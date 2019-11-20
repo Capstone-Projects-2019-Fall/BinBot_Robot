@@ -24,24 +24,11 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 200)
         pwm.set_pwm(12, 0, 150)
     elif command == 'out':
-        #pwm.set_pwm(12, 0, 130)
-        #pwm.set_pwm(13, 0, 129)
-        #time.sleep(1)
-        #pwm.set_pwm(12, 0, 400)
-        #pwm.set_pwm(13, 0, 399)
-        #time.sleep(1)
-        #pwm.set_pwm(12, 0, 50)
-        #pwm.set_pwm(13, 0, 85)
-        #time.sleep(1)
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
         time.sleep(1)
-       # pwm.set_pwm(12, 0, 327)
-       # pwm.set_pwm(13, 0, 231)
-       # time.sleep(1)
         pwm.set_pwm(12, 0, 400)
         pwm.set_pwm(13, 0, 399)
-      # time.sleep(1)
         pwm.set_pwm(13, 0, 100)
         time.sleep(60)
         pwm.set_pwm(13, 0, 100)
@@ -87,7 +74,7 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        hand_pos(5)
+        cir_pos(5)
 
         hand('in')
         pos_input = 0
