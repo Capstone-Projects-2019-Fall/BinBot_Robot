@@ -47,10 +47,23 @@ def capture_img_stream(camera):
             # At this point the image is available as stream.array
             image = stream.array
 
-            # encoded, buffer = cv2.imencode('.jpg', image)
-            # jpg_as_text = base64.b64encode(buffer)
+            encoded, buffer = cv2.imencode('.jpg', image)
+            jpg_as_text = base64.b64encode(buffer)
             # print("jpg as text: %s", jpg_as_text)
             # print("img: %s", image)
+
+            # Wites b64 encoded jpg string to .txt file
+            with open("jpg_b64.txt", "w") as fout:
+                fout.write(jpg_as_text)
+
+            # @Jose: if image can't be serialized to JSON, change to image.tolist()
+            import json
+            nd_arr = json.dumps(image)
+            # nd_arr = json.dumps(image.tolist())
+
+            # Writes numpy array of image to .txt file
+            with open("nd_array.txt", "w") as fout:
+                fout.write(nd_arr)
 
             return image
 
