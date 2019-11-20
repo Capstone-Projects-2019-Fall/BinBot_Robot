@@ -56,14 +56,19 @@ def capture_img_stream(camera):
             with open("jpg_b64.txt", "w") as fout:
                 fout.write(jpg_as_text)
 
-            # @Jose: if image can't be serialized to JSON, change to image.tolist()
+            # @Jose: if image can't be serialized to JSON, change to image.string()
             import json
             nd_arr = json.dumps(image)
-            # nd_arr = json.dumps(image.tolist())
+            # nd_arr = json.dumps(image.tostring())
 
             # Writes numpy array of image to .txt file
             with open("nd_array.txt", "w") as fout:
                 fout.write(nd_arr)
+
+            nd_list = json.dumps(image.tolist())
+            # Writes numpy array of image to .txt file
+            with open("nd_array.txt", "w") as fout:
+                fout.write(nd_list)
 
             return image
 
