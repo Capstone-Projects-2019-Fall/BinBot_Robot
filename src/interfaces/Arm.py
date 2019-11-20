@@ -62,7 +62,7 @@ def catch(pos): # Controls the claw of the robot
     pwm.set_pwm(15, 0, 194 + 10 * pos)
 
 def cir_pos(pos): # Controls the rotation of the claw
-    pwm.set_pwm(14, 0, 108 + 30 * pos)
+    pwm.set_pwm(14, 0, 350 + 30 * pos) # pos = 5 to get 90 degree
 
 
 def clean_all():
@@ -87,7 +87,7 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        hand_pos(8)
+        hand_pos(5)
 
         hand('in')
         pos_input = 0
