@@ -45,14 +45,21 @@ def hand_pos(pos):
         pwm.set_pwm(13, 0, 298 - 6 * (pos - 4))
 
 
-def catch(pos): # Controls the claw of the robot
+def catch(pos):  # Controls the claw of the robot open/close
     pwm.set_pwm(15, 0, 194 + 10 * pos)
 
-def cir_pos(pos): # Controls the rotation of the claw
-    pwm.set_pwm(14, 0, 350 + 30 * pos) # pos = 5 to get 90 degree
 
-def cir_back():
+def cir_pos(pos):  # Controls the rotation of the claw
+    pwm.set_pwm(14, 0, 350 + 30 * pos)  # pos = 5 to get 90 degree
+
+
+def cir_back():  # Rotates the claw back to starting position
     pwm.set_pwm(14, 0, 290)
+
+def home():
+    pwm.set_pwm(12, 0, 400)
+    pwm.set_pwm(13, 0, 100)
+
 
 def clean_all():
     pwm.set_pwm(0, 0, 0)
@@ -76,33 +83,35 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        cir_pos(5)
-        time.sleep(3)
-        cir_back()
+        home()
+
+        #cir_pos(5)
+        #time.sleep(3)
+        #cir_back()
 
 
-#        hand('in')
-#        pos_input = 0
-#        OUT = 1
-#        while 1:
-#            a = input()
+    #        hand('in')
+    #        pos_input = 0
+    #        OUT = 1
+    #        while 1:
+    #            a = input()
 
-#            if OUT == 1:
-#                if pos_input < 13:
-#                    pos_input += 1
-#                else:
-#                    hand('out')
-#                    print('MAX')
-#                    OUT = 0
-#            else:
-#                if pos_input > 1:
-#                    pos_input -= 1
-#                else:
-#                    print('MIN')
-#                    OUT = 1
-#            catch(pos_input)
-#            print(pos_input)
+    #            if OUT == 1:
+    #                if pos_input < 13:
+    #                    pos_input += 1
+    #                else:
+    #                    hand('out')
+    #                    print('MAX')
+    #                    OUT = 0
+    #            else:
+    #                if pos_input > 1:
+    #                    pos_input -= 1
+    #                else:
+    #                    print('MIN')
+    #                    OUT = 1
+    #            catch(pos_input)
+    #            print(pos_input)
 
-#            pass
+    #            pass
     except KeyboardInterrupt:
         clean_all()
