@@ -57,8 +57,8 @@ def cir_back():  # Rotates the claw back to starting position
     pwm.set_pwm(14, 0, 290)
 
 def home():
-    pwm.set_pwm(12, 0, 400)
-    pwm.set_pwm(13, 0, 100)
+    pwm.set_pwm(12, 0, 550)
+    pwm.set_pwm(13, 0, 200)
 
 
 def clean_all():
