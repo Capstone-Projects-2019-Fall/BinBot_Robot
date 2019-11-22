@@ -1,4 +1,5 @@
 # Description : Detection distance and tracking with ultrasonic
+#               Sensor range: 2cm ~ 500cm
 # Author      : Jose Silva
 # Date        : 2019/11/21
 
@@ -32,5 +33,5 @@ def checkdistance():  # Reading distance
 
 while 1:
     print(checkdistance())
-    time.sleep(1)
+    time.sleep(5)
     pass
