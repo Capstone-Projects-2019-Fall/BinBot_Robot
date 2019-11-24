@@ -9,9 +9,10 @@ from src.interfaces import Camera
 Jose_laptop = "192.168.43.116"
 SeanR_laptop = "192.168.43.156"
 SeanD_laptop = "192.168.43.68"
-LOCAL_HOST = "127.0.0.1";
+SeanD_laptop_linux = "192.168.0.26"
+LOCAL_HOST = "127.0.0.1"
 
-IP = LOCAL_HOST
+IP = SeanD_laptop_linux
 PORT = 7001
 
 camera = Camera.init_camera()
