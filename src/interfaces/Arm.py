@@ -21,8 +21,8 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 75)
         pwm.set_pwm(12, 0, 50)
         time.sleep(3)
-        pwm.set_pwm(13, 0, 200)
-        pwm.set_pwm(12, 0, 150)
+        pwm.set_pwm(13, 0, 140)
+        pwm.set_pwm(12, 0, 100)
     elif command == 'out':
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
@@ -44,9 +44,11 @@ def hand_pos(pos):
         pwm.set_pwm(12, 0, (430 - 24 * pos))
         pwm.set_pwm(13, 0, 298 - 6 * (pos - 4))
 
+def openClaw(): # Open claw of the robot
+    pwm.set_pwm(15, 0, 80)
 
-def catch(pos):  # Controls the claw of the robot open/close
-    pwm.set_pwm(15, 0, 194 + 10 * pos)
+def catch():  # Close claw of the robot
+    pwm.set_pwm(15, 0, 574)
 
 
 def cir_pos(pos):  # Controls the rotation of the claw
