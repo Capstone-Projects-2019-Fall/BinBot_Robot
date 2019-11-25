@@ -9,8 +9,10 @@ from src.interfaces import Camera
 Jose_laptop = "192.168.43.116"
 SeanR_laptop = "192.168.43.156"
 SeanD_laptop = "192.168.43.68"
+SeanD_laptop_linux = "192.168.0.26"
+LOCAL_HOST = "127.0.0.1"
 
-IP = SeanR_laptop
+IP = SeanD_laptop_linux
 PORT = 7001
 
 camera = Camera.init_camera()
@@ -27,10 +29,10 @@ def is_json(myjson):
 
 while True:
 
-    # img = camera.take_photo()
+    img = camera.take_photo()
     img = Camera.capture_img_stream(camera)
-
-    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", None, None, None)
+    img = open("C:/Users/Sean/Desktop/bot/download.jpg", "rb")
+    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)
     connection.send(instr_out.json())
