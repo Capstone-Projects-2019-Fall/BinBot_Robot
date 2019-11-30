@@ -31,12 +31,12 @@ def checkdistance():  # Reading distance
     return (t2 - t1) * 340 / 2  # return the distance value
 
 
-while 1:
-    if .10 < checkdistance() < .11:
-        print('in range - ' + checkdistance())
-        print()
-    else:
-        print('not in range - ' + checkdistance())
-        print()
-    time.sleep(5)
-    pass
+#while 1:
+#    if .10 < checkdistance() < .11:
+#        print('in range - ' + str(checkdistance()))
+#        print()
+#    else:
+#        print('not in range - ' + str(checkdistance()))
+#        print()
+#    time.sleep(5)
+#    pass
