@@ -12,7 +12,7 @@ SeanD_laptop = "192.168.43.68"
 SeanD_laptop_linux = "192.168.0.26"
 LOCAL_HOST = "127.0.0.1"
 
-IP = SeanD_laptop_linux
+IP = "76.99.26.49"
 PORT = 7001
 
 camera = Camera.init_camera()
@@ -29,7 +29,10 @@ def is_json(myjson):
 
 while True:
 
-    img = Camera.capture_img_stream(camera)
+    # img = camera.take_photo()
+    # img = Camera.capture_img_stream(camera)
+    # img = open("C:/Users/Sean/Desktop/bot/download.jpg", "rb")
+    img = camera.capture_img(camera)
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)

@@ -41,7 +41,7 @@ def capture_img_stream(camera):
     with camera:
         camera.start_preview()
         # Camera warm-up time
-        time.sleep(1)
+        time.sleep(2)
         with picamera.array.PiRGBArray(camera) as stream:
             camera.capture(stream, format='bgr')
             # At this point the image is available as stream.array
@@ -65,12 +65,24 @@ def capture_img_stream(camera):
           #  with open("nd_array.txt", "w") as fout:
           #      fout.write(nd_arr)
 
-            nd_list = json.dumps(image.tolist())
-            # Writes numpy array of image to .txt file
-            with open("nd_array.txt", "w") as fout:
-                fout.write(nd_list)
+            # nd_list = json.dumps(image.tolist())
+            # # Writes numpy array of image to .txt file
+            # with open("nd_list.txt", "w") as fout:
+            #     fout.write(nd_list)
 
             return image
+
+
+def capture_image(camera):
+    with camera:
+        camera.start_preview()
+        time.sleep(1)
+        camera.capture('img.jpg')
+        camera.stop_preview()
+
+    with open("img.jpg", "rb") as img_file:
+        encoded = base64.b64encode(img_file.read())
+        return encoded
 
 
 if __name__ == '__main__':
