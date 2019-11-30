@@ -32,6 +32,10 @@ def checkdistance():  # Reading distance
 
 
 while 1:
-    print(checkdistance())
+    if .10 < checkdistance() > .11:
+        print(checkdistance())
+        print('in range')
+    else:
+        print('not in range')
     time.sleep(5)
     pass
