@@ -7,12 +7,12 @@ from src.interfaces import Camera
 from src.interfaces.DistanceSensor import checkdistance
 
 Jose_laptop = "192.168.43.116"
-SeanR_laptop = "192.168.43.156"
+SeanR_laptop = "172.58.207.120"
 SeanD_laptop = "192.168.43.68"
 SeanD_laptop_linux = "192.168.0.26"
 LOCAL_HOST = "127.0.0.1"
 
-IP = "76.99.26.49"
+IP = SeanR_laptop
 PORT = 7001
 
 camera = Camera.init_camera()
@@ -32,7 +32,7 @@ while True:
     # img = camera.take_photo()
     # img = Camera.capture_img_stream(camera)
     # img = open("C:/Users/Sean/Desktop/bot/download.jpg", "rb")
-    img = camera.capture_img(camera)
+    img = Camera.capture_image(camera)
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)
