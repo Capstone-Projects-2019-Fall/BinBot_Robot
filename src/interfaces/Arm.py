@@ -6,13 +6,14 @@ Author: Jose Silva
 Date: 2019/11/14
 '''
 
+from src.interfaces import DistanceSensor
 from __future__ import division
 import time
 import RPi.GPIO as GPIO
 import sys
 import Adafruit_PCA9685
 
-from src.interfaces import DistanceSensor
+check = DistanceSensor.checkdistance()
 
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     try:
 
         home()
-        if .10 < DistanceSensor.checkdistance() < .11:
+        if .10 < check < .11:
             openClaw()
             time.sleep(1)
             hand('in')
