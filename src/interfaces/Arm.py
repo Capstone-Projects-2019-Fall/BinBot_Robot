@@ -7,6 +7,7 @@ Date: 2019/11/14
 '''
 
 from __future__ import division
+from src.interfaces.DistanceSensor import checkdistance
 import time
 import RPi.GPIO as GPIO
 import sys
@@ -87,6 +88,15 @@ if __name__ == '__main__':
     try:
 
         home()
+        if checkdistance() > .10 and checkdistance() < .11:
+            openClaw()
+            time.sleep(1)
+            hand('in')
+            time.sleep(1)
+            catch()
+            time.sleep(1)
+            hand('out')
+
 
         #cir_pos(5)
         #time.sleep(3)
