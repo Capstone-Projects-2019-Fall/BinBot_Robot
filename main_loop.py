@@ -4,7 +4,7 @@ from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
 from src.interfaces import Treads
 from src.interfaces import Camera
-
+from src.interfaces.DistanceSensor import checkdistance
 
 Jose_laptop = "192.168.43.116"
 SeanR_laptop = "192.168.43.156"
@@ -29,9 +29,7 @@ def is_json(myjson):
 
 while True:
 
-    img = camera.take_photo()
     img = Camera.capture_img_stream(camera)
-    img = open("C:/Users/Sean/Desktop/bot/download.jpg", "rb")
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)
@@ -48,7 +46,12 @@ while True:
             try:
                 Treads.setup()
                 for movement in instr_in.treads():
-                    Treads.executeTreadInstruction(movement)
+                    if movement["angle"] == 0:
+                        x = checkdistance()
+                        new_movement = {"angle": 0, "distance": x}
+                        Treads.executeTreadInstruction(new_movement)
+                    else:
+                        Treads.executeTreadInstruction(movement)
                     print()
                 Treads.destroy()
             except Exception as e:
