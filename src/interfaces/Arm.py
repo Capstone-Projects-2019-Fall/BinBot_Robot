@@ -63,7 +63,7 @@ def cir_back():  # Rotates the claw back to starting position
 def home():
     pwm.set_pwm(12, 0, 450)
     pwm.set_pwm(13, 0, 399)
-    #pwm.set_pwm(13, 0, 100)
+    pwm.set_pwm(13, 0, 100)
 
 
 def clean_all():
@@ -88,7 +88,20 @@ def clean_all():
 if __name__ == '__main__':
     try:
 
-        home()
+        clean_all()
+
+        com = 'out'
+        lcom = ''
+
+        hand('in')
+        time.sleep(2)
+        hand(com)
+
+        if com != lcom:
+            hand(com)
+            lcom = com
+
+
 
        # while 1:
        #     if .10 < DistanceSensor.checkdistance() < .11:
@@ -100,7 +113,7 @@ if __name__ == '__main__':
        #         catch() # pwm.set_pwm(15, 0, 574)
        #         time.sleep(1)
        #         hand('out')
-       #         if
+       #         if (hand
        #     else:
        #         print(DistanceSensor.checkdistance())
        #         print("not in range")
