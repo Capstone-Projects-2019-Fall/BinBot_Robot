@@ -5,24 +5,39 @@
 
 from __future__ import division
 
+from io import BytesIO
+import time
 import base64
 import picamera
 # import picamera.array
 # import cv2
-import time
 
 
-# Setting up Raspberry Pi camera
-# camera = PiCamera() # Raspberry Pi Camera
-# camera.resolution = (640, 480)
-# camera.framerate = 20
+class Camera:
+    camera = None
 
+    def __init__(self):
+        self.camera = picamera.PiCamera()
+        self.camera.resolution = (1280, 720)
+        self.camera.framerate = 30
 
-def init_camera():
-    camera = picamera.PiCamera()
-    camera.resolution = (1280, 720)
-    camera.framerate = 30
-    return camera
+    def capture_image(self):
+        with self.camera:
+            self.camera.start_preview()
+            time.sleep(1)
+
+            # TODO TEST: Capture image as stream
+            with BytesIO() as stream:
+                self.camera.capture(stream, "jpeg")
+                img = base64.b64decode(stream.read())
+
+            # self.camera.capture('img.jpg')
+            self.camera.stop_preview()
+            return img
+
+        # with open("img.jpg", "rb") as img_file:
+        #     encoded = base64.b64encode(img_file.read())
+        #     return encoded
 
 
 def take_photo():
@@ -73,13 +88,4 @@ def take_photo():
 #             return image
 
 
-def capture_image(camera):
-    with camera:
-        camera.start_preview()
-        time.sleep(1)
-        camera.capture('img.jpg')
-        camera.stop_preview()
 
-    with open("img.jpg", "rb") as img_file:
-        encoded = base64.b64encode(img_file.read())
-        return encoded

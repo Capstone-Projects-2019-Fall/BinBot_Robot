@@ -15,7 +15,7 @@ LOCAL_HOST = "127.0.0.1"
 IP = SeanR_laptop
 PORT = 7001
 
-camera = Camera.init_camera()
+camera = Camera.Camera()
 arm = None
 
 
@@ -29,7 +29,7 @@ def is_json(myjson):
 
 while True:
 
-    img = Camera.capture_image(camera)
+    img = camera.capture_image()
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)

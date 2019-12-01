@@ -2,7 +2,6 @@
 # Date: 10/3/2019
 
 import json
-import base64
 
 
 class Instruction:

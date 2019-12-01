@@ -27,8 +27,6 @@ class TestInstruction(unittest.TestCase):
                 instr_out = Instruction(Instruction.FROM_DATA, "PATROL", encoded, None, None)
                 print("breakpoint")
 
-
-
             # img = Camera.capture_img_stream(self.camera)
 
             # import json
