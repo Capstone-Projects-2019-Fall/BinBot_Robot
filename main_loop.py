@@ -29,12 +29,17 @@ def is_json(myjson):
 
 while True:
 
+    print("Capturing image..")
     img = camera.capture_image()
     instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
 
     connection = Connection(IP, PORT)
+
+    print("Sending image to server")
     connection.send(instr_out.json())
     msg_in = connection.receive()
+
+    print("Received image from server")
     connection.close()
 
     print(msg_in)
