@@ -27,18 +27,26 @@ class Camera:
             self.camera.start_preview()
             time.sleep(1)
 
-            # # TODO TEST: Capture image as stream
-            # with BytesIO() as stream:
-            #     self.camera.capture(stream, "jpeg")
-            #     img = base64.b64decode(stream.read())
+            # TODO TEST: Capture image as stream
+            with BytesIO() as stream:
+                self.camera.capture(stream, "jpeg")
+                img = base64.b64decode(stream.read())
 
-            self.camera.capture('img.jpg')
+            # Wites b64 encoded jpg string to .txt file
+            with open("stream.txt", "w") as fout:
+                fout.write(str(img))
+                
             self.camera.stop_preview()
-            # return img
+            return img
 
-        with open("img.jpg", "rb") as img_file:
-            encoded = base64.b64encode(img_file.read())
-            return encoded
+            # # jpeg presist
+            # self.camera.capture('img.jpg')
+            # self.camera.stop_preview()
+
+        # #jpeg presist
+        # with open("img.jpg", "rb") as img_file:
+        #     encoded = base64.b64encode(img_file.read())
+        #     return encoded
 
 
 def take_photo():
