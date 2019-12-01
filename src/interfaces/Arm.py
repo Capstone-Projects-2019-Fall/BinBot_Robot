@@ -13,7 +13,6 @@ import RPi.GPIO as GPIO
 import sys
 import Adafruit_PCA9685
 
-
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
@@ -34,7 +33,7 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 100)
 
 
-def openClaw(): # Open claw of the robot
+def openClaw():  # Open claw of the robot
     pwm.set_pwm(15, 0, 80)
 
 
@@ -75,36 +74,45 @@ def clean_all():  # Reset servos/channels
     pwm.set_pwm(15, 0, 0)
 
 
+def pick_up():  # Method that completes all steps of the BinBot pick up
+
+    while 1:
+        if .10 < DistanceSensor.checkdistance() < .11:
+            print(DistanceSensor.checkdistance())
+            openClaw()
+            time.sleep(1)
+            hand('in')
+            time.sleep(1)
+            catch()  # pwm.set_pwm(15, 0, 574)
+            time.sleep(1)
+            hand('out')
+        else:
+            print(DistanceSensor.checkdistance())
+            print("not in range")
+        time.sleep(5)
+
+
 if __name__ == '__main__':
     try:
 
-        clean_all()
 
-        com = 'out'
-        lcom = ''
 
-        hand('in')
-        time.sleep(2)
-        hand(com)
 
-        if com != lcom:
-            hand(com)
-
-       # while 1:
-       #     if .10 < DistanceSensor.checkdistance() < .11:
-       #         print(DistanceSensor.checkdistance())
-       #         openClaw()
-       #         time.sleep(1)
-       #         hand('in')
-       #         time.sleep(1)
-       #         catch() # pwm.set_pwm(15, 0, 574)
-       #         time.sleep(1)
-       #         hand('out')
-       #         if (hand
-       #     else:
-       #         print(DistanceSensor.checkdistance())
-       #         print("not in range")
-       #     time.sleep(5)
+    #  while 1:
+    #     if .10 < DistanceSensor.checkdistance() < .11:
+    #         print(DistanceSensor.checkdistance())
+    #         openClaw()
+    #         time.sleep(1)
+    #         hand('in')
+    #         time.sleep(1)
+    #         catch() # pwm.set_pwm(15, 0, 574)
+    #         time.sleep(1)
+    #         hand('out')
+    #         if (hand
+    #     else:
+    #         print(DistanceSensor.checkdistance())
+    #         print("not in range")
+    #     time.sleep(5)
 
     except KeyboardInterrupt:
         clean_all()
