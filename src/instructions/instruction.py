@@ -54,7 +54,7 @@ class Instruction:
 
     @staticmethod
     def __img_to_string(img):
-        return base64.b64encode(img.read()).decode("utf-8")
+        return img.decode("utf-8")
 
     def status(self):
         return self.__status

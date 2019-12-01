@@ -1,8 +1,9 @@
+import base64
 import json
 import unittest
-from src.interfaces.Connection import Connection
+# from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
-from src.interfaces import Camera
+# from src.interfaces import Camera
 
 Jose_laptop = "192.168.43.116"
 SeanR_laptop = "192.168.43.156"
@@ -16,12 +17,19 @@ PORT = 7001
 class TestInstruction(unittest.TestCase):
 
     def setUp(self):
-        self.camera = Camera.init_camera()
+        # self.camera = Camera.init_camera()
         pass
 
     def test_execute(self):
         try:
-            img = Camera.capture_img_stream(self.camera)
+            with open("cat.jpg", "rb") as img_file:
+                encoded = base64.b64encode(img_file.read())
+                instr_out = Instruction(Instruction.FROM_DATA, "PATROL", encoded, None, None)
+                print("breakpoint")
+
+
+
+            # img = Camera.capture_img_stream(self.camera)
 
             # import json
             # img = json.dumps(Camera.capture_img_stream(self.camera))
