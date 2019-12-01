@@ -7,8 +7,8 @@ from __future__ import division
 
 import base64
 import picamera
-import picamera.array
-import cv2
+# import picamera.array
+# import cv2
 import time
 
 
@@ -37,40 +37,40 @@ def take_photo():
     camera.stop_preview()
 
 
-def capture_img_stream(camera):
-    with camera:
-        camera.start_preview()
-        # Camera warm-up time
-        time.sleep(2)
-        with picamera.array.PiRGBArray(camera) as stream:
-            camera.capture(stream, format='bgr')
-            # At this point the image is available as stream.array
-            image = stream.array
-
-            encoded, buffer = cv2.imencode('.jpg', image)
-            jpg_as_text = base64.b64encode(buffer)
-            # print("jpg as text: %s", jpg_as_text)
-            # print("img: %s", image)
-
-            # Wites b64 encoded jpg string to .txt file
-            with open("jpg_b64.txt", "w") as fout:
-                fout.write(str(jpg_as_text))
-
-            # @Jose: if image can't be serialized to JSON, change to image.string()
-            import json
-           # nd_arr = json.dumps(image)
-           # nd_arr = json.dumps(image.tostring())
-
-            # Writes numpy array of image to .txt file
-          #  with open("nd_array.txt", "w") as fout:
-          #      fout.write(nd_arr)
-
-            # nd_list = json.dumps(image.tolist())
-            # # Writes numpy array of image to .txt file
-            # with open("nd_list.txt", "w") as fout:
-            #     fout.write(nd_list)
-
-            return image
+# def capture_img_stream(camera):
+#     with camera:
+#         camera.start_preview()
+#         # Camera warm-up time
+#         time.sleep(2)
+#         with picamera.array.PiRGBArray(camera) as stream:
+#             camera.capture(stream, format='bgr')
+#             # At this point the image is available as stream.array
+#             image = stream.array
+#
+#             encoded, buffer = cv2.imencode('.jpg', image)
+#             jpg_as_text = base64.b64encode(buffer)
+#             # print("jpg as text: %s", jpg_as_text)
+#             # print("img: %s", image)
+#
+#             # Wites b64 encoded jpg string to .txt file
+#             with open("jpg_b64.txt", "w") as fout:
+#                 fout.write(str(jpg_as_text))
+#
+#             # @Jose: if image can't be serialized to JSON, change to image.string()
+#             import json
+#            # nd_arr = json.dumps(image)
+#            # nd_arr = json.dumps(image.tostring())
+#
+#             # Writes numpy array of image to .txt file
+#           #  with open("nd_array.txt", "w") as fout:
+#           #      fout.write(nd_arr)
+#
+#             # nd_list = json.dumps(image.tolist())
+#             # # Writes numpy array of image to .txt file
+#             # with open("nd_list.txt", "w") as fout:
+#             #     fout.write(nd_list)
+#
+#             return image
 
 
 def capture_image(camera):
@@ -83,13 +83,3 @@ def capture_image(camera):
     with open("img.jpg", "rb") as img_file:
         encoded = base64.b64encode(img_file.read())
         return encoded
-
-
-if __name__ == '__main__':
-    try:
-        # take_photo()
-        cv2.imshow("Image", capture_img_stream())
-        cv2.waitKey(0)
-    except Exception as e:
-        print("take_photo exception: %s", e)
-
