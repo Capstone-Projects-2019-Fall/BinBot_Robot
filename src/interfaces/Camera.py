@@ -16,12 +16,13 @@ import picamera
 class Camera:
     camera = None
 
-    def __init__(self):
+    def init_camera(self):
         self.camera = picamera.PiCamera()
         self.camera.resolution = (1280, 720)
         self.camera.framerate = 30
 
     def capture_image(self):
+        self.init_camera()
         with self.camera:
             self.camera.start_preview()
             time.sleep(1)
