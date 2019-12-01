@@ -99,7 +99,6 @@ if __name__ == '__main__':
 
         if com != lcom:
             hand(com)
-            lcom = com
 
 
 
