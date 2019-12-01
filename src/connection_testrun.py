@@ -15,8 +15,8 @@ print("Connection established!")
 
 isend = Instruction(STATUS, IMG, TREADS, ARMS)
 
-print("Attempting to send string " + isend.json() + " to server...")
-connection.send(isend.json())
+print("Attempting to send string " + isend.instructionToJson() + " to server...")
+connection.send(isend.instructionToJson())
 print("Successfully sent string to client!")
 
 print("Attempting to receive string from server...")

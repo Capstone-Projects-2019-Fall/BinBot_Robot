@@ -38,7 +38,7 @@ while True:
 
     connection = Connection(IP, PORT)
     print("Sending image to server")
-    connection.send(instr_out.json())
+    connection.send(instr_out.instructionToJson())
 
     msg_in = connection.receive()
     print("Received image from server")
