@@ -19,35 +19,24 @@ pwm.set_pwm_freq(50)
 
 
 def hand(command):  # Control the arm movements in and out
-    if command == 'in':
+    if command == 'in':  # the arm moves out to reach item
         pwm.set_pwm(13, 0, 75)
         pwm.set_pwm(12, 0, 50)
         time.sleep(3)
         pwm.set_pwm(13, 0, 140)
         pwm.set_pwm(12, 0, 100)
-    elif command == 'out':
+    elif command == 'out':  # the arm moves back in to bring in item
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
         time.sleep(1)
         pwm.set_pwm(12, 0, 400)
         pwm.set_pwm(13, 0, 399)
         pwm.set_pwm(13, 0, 100)
-        time.sleep(60)
-        pwm.set_pwm(13, 0, 100)
-        time.sleep(60)
-        pwm.set_pwm(13, 0, 100)
 
-
-def hand_pos(pos):
-    if pos <= 4:
-        pwm.set_pwm(12, 0, 430 - 30 * pos)
-        pwm.set_pwm(13, 0, 429 - 30 * pos)
-    else:
-        pwm.set_pwm(12, 0, (430 - 24 * pos))
-        pwm.set_pwm(13, 0, 298 - 6 * (pos - 4))
 
 def openClaw(): # Open claw of the robot
     pwm.set_pwm(15, 0, 80)
+
 
 def catch():  # Close claw of the robot
     pwm.set_pwm(15, 0, 574)
@@ -60,13 +49,14 @@ def cir_pos(pos):  # Controls the rotation of the claw
 def cir_back():  # Rotates the claw back to starting position
     pwm.set_pwm(14, 0, 290)
 
-def home():
+
+def home():  # Brings the arm to a home position
     pwm.set_pwm(12, 0, 450)
     pwm.set_pwm(13, 0, 399)
     pwm.set_pwm(13, 0, 100)
 
 
-def clean_all():
+def clean_all():  # Reset servos/channels
     pwm.set_pwm(0, 0, 0)
     pwm.set_pwm(1, 0, 0)
     pwm.set_pwm(2, 0, 0)
@@ -99,8 +89,6 @@ if __name__ == '__main__':
 
         if com != lcom:
             hand(com)
-
-
 
        # while 1:
        #     if .10 < DistanceSensor.checkdistance() < .11:
