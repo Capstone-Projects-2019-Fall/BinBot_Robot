@@ -22,6 +22,14 @@ class Instruction:
             self.__arms = arms
 
     def json(self):
+        retval = {"status": str(self.__status),
+                  "img": Instruction.__img_to_string(self.__img),
+                  "treads": self.__treads,
+                  "arms": self.__arms,
+                  }
+        return retval
+
+    def json_OLD(self):
         retval = '{"status":"'
         if self.__status is not None:
             retval += self.__status

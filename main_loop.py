@@ -1,5 +1,5 @@
 import json
-
+import time
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
 from src.interfaces import Treads
@@ -29,9 +29,12 @@ def is_json(myjson):
 
 while True:
 
+    cur_t0 = time.time()
     print("Capturing image..")
     img = camera.capture_image()
-    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, None, None)
+    distance = checkdistance()
+    print(f"Distance: {distance}")
+    instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, distance, None)
 
     connection = Connection(IP, PORT)
     print("Sending image to server")
@@ -40,6 +43,8 @@ while True:
     msg_in = connection.receive()
     print("Received image from server")
     connection.close()
+
+    print(f"exhcange time: {time.time() - cur_t0}")
 
     print(msg_in)
     # if is_json(msg_in):

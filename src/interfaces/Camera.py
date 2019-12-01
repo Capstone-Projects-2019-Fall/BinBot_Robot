@@ -1,4 +1,4 @@
-# Author: Jose Silva
+# Author: Jose Silva, Sean Reddington
 # Date Created: November 9th, 2019
 # File Name: Camera.py
 # Description: Camera functionality
@@ -20,6 +20,8 @@ class Camera:
         self.camera = picamera.PiCamera()
         self.camera.resolution = (1280, 720)
         self.camera.framerate = 30
+        while self.camera.analog_gain <= 1:
+            time.sleep(0.1)
         self.camera.shutter_speed = self.camera.exposure_speed
         self.camera.exposure_mode = 'off'
         g = self.camera.awb_gains
