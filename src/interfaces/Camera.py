@@ -20,6 +20,11 @@ class Camera:
         self.camera = picamera.PiCamera()
         self.camera.resolution = (1280, 720)
         self.camera.framerate = 30
+        self.camera.shutter_speed = self.camera.exposure_speed
+        self.camera.exposure_mode = 'off'
+        g = self.camera.awb_gains
+        self.camera.awb_mode = 'off'
+        self.camera.awb_gains = g
 
     def capture_image(self):
         self.init_camera()
@@ -27,14 +32,14 @@ class Camera:
             self.camera.start_preview()
             time.sleep(1)
 
-            # TODO TEST: Capture image as stream
+            # Capture image as BytesIO stream instead of presisting file to disk
             with BytesIO() as stream:
                 self.camera.capture(stream, "jpeg")
-                img = base64.b64decode(stream.read())
+                img = base64.b64encode(stream.getvalue())
 
-            # Wites b64 encoded jpg string to .txt file
-            with open("stream.txt", "w") as fout:
-                fout.write(str(img))
+                # # For writing stream to file
+                # with open("stream.txt", "wb") as fout:
+                #     fout.write(img)
                 
             self.camera.stop_preview()
             return img
