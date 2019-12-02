@@ -50,11 +50,13 @@ while True:
     if is_json(msg_in):
         instr_in = Instruction(Instruction.FROM_JSON, msg_in)
         status = instr_in.status()
-        if instr_in.treads() is not None:
-            print(instr_in.treads())
+        treads = instr_in.treads()
+        if treads is not None:
+            print(treads)
             try:
                 Treads.setup()
-                for movement in instr_in.treads():
+                for movement in treads:
+                    print(f"Exe: {movement}")
                     Treads.executeTreadInstruction(movement)
                     # if movement["angle"] == 0.0 and movement["distance"] == 0.0:
                     #     x = checkdistance()
