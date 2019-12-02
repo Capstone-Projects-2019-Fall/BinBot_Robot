@@ -22,7 +22,12 @@ class Instruction:
             self.__arms = arms
 
     def instructionToJson(self):
-        return json.dumps(self)
+        obj = {"status": str(self.__status),
+               "img": Instruction.__img_to_string(self.__img),
+               "treads": self.__treads,
+               "arms": self.__arms,
+               }
+        return json.dumps(obj)
 
     def json_OLD(self):
         retval = '{"status":"'
