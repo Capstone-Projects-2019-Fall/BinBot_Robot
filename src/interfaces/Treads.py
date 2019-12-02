@@ -52,21 +52,21 @@ def executeTreadInstruction(instruction):
     angle = instruction["angle"]
     distance = instruction["distance"]
 
-    if angle == 0 or angle == 360:
+    if angle == 0.0 or angle == 360.0:
         print("Moving " + str(distance * 10) + " cm forward.")
         _forward(distance)
 
-    elif angle == 180:
+    elif angle == 180.0:
         print("Moving " + str(distance*10) + " cm backward.")
         _backward(distance)
 
-    elif 0 < angle < 180:
+    elif 0.0 < angle < 180.0:
         print("Treads turning " + str(angle) + " degrees right.")
         turn_scale = angle * 0.01
         _rightTurn(distance, turn_scale)
 
-    elif 180 < angle < 360:
-        angle -= 180
+    elif 180.0 < angle < 360.0:
+        angle -= 180.0
         print("Treads turning " + str(angle) + " degrees left.")
         turn_scale = angle * 0.01
         _leftTurn(distance, turn_scale)
@@ -88,22 +88,22 @@ def test_executeTreadInstruction(instruction):
     angle = instruction["angle"]
     distance = instruction["distance"]
 
-    if angle == 0 or angle == 360:
+    if angle == 0.0 or angle == 360.0:
         print("Moving " + str(distance * 10) + " cm forward.")
         print(f"Distance: {distance}\nSpeed: {speed}\nSleep: {distance * d_scale}")
 
-    elif angle == 180:
+    elif angle == 180.0:
         print("Moving " + str(distance*10) + " cm backward.")
         print(f"Distance: {distance}\nSpeed: {speed}\nSleep: {distance * d_scale}")
 
-    elif 0 < angle < 180:
+    elif 0.0 < angle < 180.0:
         print("Treads turning " + str(angle) + " degrees right.")
         turn_scale = angle * 0.01
         turn = distance * turn_scale - sleep_bias
         print(f"Distance: {distance}\nSpeed: {speed}\nSlide bias: {slide_bias}\nSleep: {turn}")
 
-    elif 180 < angle < 360:
-        angle -= 180
+    elif 180.0 < angle < 360.0:
+        angle -= 180.0
         print("Treads turning " + str(angle) + " degrees left.")
         turn_scale = angle * 0.01
         turn = distance * turn_scale - sleep_bias
