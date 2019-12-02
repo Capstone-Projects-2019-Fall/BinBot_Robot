@@ -28,9 +28,10 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
         time.sleep(1)
-        pwm.set_pwm(12, 0, 400)
-        pwm.set_pwm(13, 0, 399)
-        pwm.set_pwm(13, 0, 100)
+        while 1:
+            pwm.set_pwm(12, 0, 450)
+            pwm.set_pwm(13, 0, 399)
+            pwm.set_pwm(13, 0, 200)
 
 
 def openClaw():  # Open claw of the robot
@@ -52,7 +53,7 @@ def cir_back():  # Rotates the claw back to starting position
 def home():  # Brings the arm to a home position
     pwm.set_pwm(12, 0, 450)
     pwm.set_pwm(13, 0, 399)
-    pwm.set_pwm(13, 0, 100)
+    pwm.set_pwm(13, 0, 200)
 
 
 def clean_all():  # Reset servos/channels
