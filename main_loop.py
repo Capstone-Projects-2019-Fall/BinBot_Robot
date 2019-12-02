@@ -58,12 +58,13 @@ while True:
                 for movement in treads:
                     print(f"Exe: {movement}")
                     Treads.executeTreadInstruction(movement)
-                    # if movement["angle"] == 0.0 and movement["distance"] == 0.0:
-                    #     x = checkdistance()
-                    #     new_movement = {"angle": 0, "distance": x}
-                    #     Treads.executeTreadInstruction(new_movement)
-                    # else:
-                    #     Treads.executeTreadInstruction(movement)
+                    if movement["angle"] == 0.0 and movement["distance"] == 1.0:
+                        # x = checkdistance()
+                        # new_movement = {"angle": 0, "distance": x}
+                        # Treads.executeTreadInstruction(new_movement)
+                        print("PICK UP")
+                    else:
+                        Treads.executeTreadInstruction(movement)
                     print()
                 Treads.destroy()
             except Exception as e:
