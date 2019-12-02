@@ -47,25 +47,26 @@ while True:
     print(f"exhcange time: {time.time() - cur_t0}")
 
     print(msg_in)
-    # if is_json(msg_in):
-    #     instr_in = Instruction(Instruction.FROM_JSON, msg_in)
-    #     status = instr_in.status()
-    #     if instr_in.treads() is not None:
-    #         print(instr_in.treads())
-    #         try:
-    #             Treads.setup()
-    #             for movement in instr_in.treads():
-    #                 if movement["angle"] == 0:
-    #                     x = checkdistance()
-    #                     new_movement = {"angle": 0, "distance": x}
-    #                     Treads.executeTreadInstruction(new_movement)
-    #                 else:
-    #                     Treads.executeTreadInstruction(movement)
-    #                 print()
-    #             Treads.destroy()
-    #         except Exception as e:
-    #             print("Tread exception: %s", e)
-    #             Treads.destroy()
-    #
-    #     else:
-    #         print('No treads')
+    if is_json(msg_in):
+        instr_in = Instruction(Instruction.FROM_JSON, msg_in)
+        status = instr_in.status()
+        if instr_in.treads() is not None:
+            print(instr_in.treads())
+            try:
+                Treads.setup()
+                for movement in instr_in.treads():
+                    Treads.executeTreadInstruction(movement)
+                    # if movement["angle"] == 0.0 and movement["distance"] == 0.0:
+                    #     x = checkdistance()
+                    #     new_movement = {"angle": 0, "distance": x}
+                    #     Treads.executeTreadInstruction(new_movement)
+                    # else:
+                    #     Treads.executeTreadInstruction(movement)
+                    print()
+                Treads.destroy()
+            except Exception as e:
+                print("Tread exception: %s", e)
+                Treads.destroy()
+
+        else:
+            print('No treads')
