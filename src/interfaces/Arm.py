@@ -85,6 +85,8 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
         time.sleep(1)
         catch()  # pwm.set_pwm(15, 0, 574)
         time.sleep(1)
+        clean_all()
+        time.sleep(1)
         hand('out')
     else:
         print(DistanceSensor.checkdistance())
