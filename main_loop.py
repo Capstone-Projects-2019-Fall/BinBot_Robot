@@ -12,7 +12,7 @@ SeanD_laptop = "192.168.43.68"
 SeanD_laptop_linux = "192.168.0.26"
 LOCAL_HOST = "127.0.0.1"
 
-IP = SeanR_laptop
+IP = SeanD_laptop
 PORT = 7001
 
 camera = Camera.Camera()
@@ -57,7 +57,6 @@ while True:
                 Treads.setup()
                 for movement in treads:
                     print(f"Exe: {movement}")
-                    Treads.executeTreadInstruction(movement)
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         # x = checkdistance()
                         # new_movement = {"angle": 0, "distance": x}
