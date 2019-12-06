@@ -20,13 +20,13 @@ class Camera:
         self.camera = picamera.PiCamera()
         self.camera.resolution = (1280, 720)
         self.camera.framerate = 30
-        while self.camera.analog_gain <= 1:
-            time.sleep(0.1)
-        self.camera.shutter_speed = self.camera.exposure_speed
-        self.camera.exposure_mode = 'off'
-        g = self.camera.awb_gains
-        self.camera.awb_mode = 'off'
-        self.camera.awb_gains = g
+        # while self.camera.analog_gain <= 1:
+        #     time.sleep(0.1)
+        # self.camera.shutter_speed = self.camera.exposure_speed
+        # self.camera.exposure_mode = 'off'
+        # g = self.camera.awb_gains
+        # self.camera.awb_mode = 'off'
+        # self.camera.awb_gains = g
 
     def capture_image(self):
         self.init_camera()

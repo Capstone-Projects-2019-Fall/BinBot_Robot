@@ -12,7 +12,7 @@ SeanD_laptop = "192.168.43.68"
 SeanD_laptop_linux = "192.168.0.26"
 LOCAL_HOST = "127.0.0.1"
 
-IP = SeanD_laptop
+IP = SeanR_laptop
 PORT = 7001
 
 camera = Camera.Camera()
@@ -59,12 +59,13 @@ while True:
                     print(f"Exe: {movement}")
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         x = checkdistance()
-                        print(x)
-                        new_movement = {"angle": 0, "distance": 2.5}
+                        print(f"dist: {x}")
+                        new_movement = {"angle": 0, "distance": 2.0}
                         Treads.executeTreadInstruction(new_movement)
                         print("PICK UP")
                     else:
-                        Treads.executeTreadInstruction(movement)
+                        print("skipping")
+                        # Treads.executeTreadInstruction(movement)
                     print()
                 Treads.destroy()
             except Exception as e:
