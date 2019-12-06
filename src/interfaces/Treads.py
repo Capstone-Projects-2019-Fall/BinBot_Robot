@@ -37,7 +37,7 @@ right_backward = 1
 pwn_A = 0
 pwm_B = 0
 
-d_scale = 0.5         # Scales sleep to unit of distance
+d_scale = 0.3         # Scales sleep to unit of distance
 speed = 100           # Speed at which the treads move
 slide_bias = 0.85     # Scales the speed of the counter turning tread based on friction of terrain
 sleep_bias = 0.90      # Scales the sleep time based on friction of terrain

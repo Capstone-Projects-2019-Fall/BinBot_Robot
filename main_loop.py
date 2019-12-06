@@ -59,8 +59,10 @@ while True:
                     print(f"Exe: {movement}")
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         x = checkdistance()
-                        print(f"dist: {x}")
-                        new_movement = {"angle": 0, "distance": 2.0}
+                        print(f"dist2: {x}")
+                        x = (x*10) - 0.1
+                        print(f"dist2: {x}")
+                        new_movement = {"angle": 0, "distance": x}
                         Treads.executeTreadInstruction(new_movement)
                         print("PICK UP")
                     else:
