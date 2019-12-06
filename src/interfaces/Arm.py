@@ -7,7 +7,7 @@ Date: 2019/11/14
 '''
 
 from __future__ import division
-import DistanceSensor
+from src.interfaces import DistanceSensor
 import time
 import RPi.GPIO as GPIO
 import sys
@@ -78,7 +78,7 @@ def clean_all():  # Reset servos/channels
 def pick_up():  # Method that completes all steps of the BinBot pick up
 
     # if .10 < DistanceSensor.checkdistance() < .11:
-    print(DistanceSensor.checkdistance())
+    # print(DistanceSensor.checkdistance())
     openClaw()
     time.sleep(1)
     hand('in')
