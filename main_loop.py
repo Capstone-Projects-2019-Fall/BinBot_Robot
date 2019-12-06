@@ -3,6 +3,7 @@ import time
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
 from src.interfaces import Treads
+from src.interfaces import Arm
 from src.interfaces import Camera
 from src.interfaces.DistanceSensor import checkdistance
 
@@ -14,9 +15,7 @@ LOCAL_HOST = "127.0.0.1"
 
 IP = SeanR_laptop
 PORT = 7001
-
 camera = Camera.Camera()
-arm = None
 
 
 def is_json(myjson):
@@ -31,6 +30,7 @@ while True:
 
     cur_t0 = time.time()
     print("Capturing image..")
+    Arm.home()
     img = camera.capture_image()
     distance = checkdistance()
     print(f"Distance: {distance}")
@@ -59,20 +59,22 @@ while True:
                     print(f"Exe: {movement}")
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         x = checkdistance()
-                        print(f"dist2: {x}")
-                        x = (x*10) - 0.1
+                        print(f"dist1: {x}")
+                        x = (x*10) - 1.0
                         print(f"dist2: {x}")
                         new_movement = {"angle": 0, "distance": x}
                         Treads.executeTreadInstruction(new_movement)
                         print("PICK UP")
+                        Arm.pick_up()
                     else:
                         print("skipping")
                         # Treads.executeTreadInstruction(movement)
                     print()
                 Treads.destroy()
             except Exception as e:
-                print("Tread exception: %s", e)
+                print("Instruction execution exception: %s", e)
                 Treads.destroy()
+                Arm.clean_all()
 
         else:
             print('No treads')
