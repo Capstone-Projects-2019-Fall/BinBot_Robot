@@ -77,20 +77,20 @@ def clean_all():  # Reset servos/channels
 
 def pick_up():  # Method that completes all steps of the BinBot pick up
 
-    if .10 < DistanceSensor.checkdistance() < .11:
-        print(DistanceSensor.checkdistance())
-        openClaw()
-        time.sleep(1)
-        hand('in')
-        time.sleep(1)
-        catch()  # pwm.set_pwm(15, 0, 574)
-        time.sleep(1)
-        clean_all()
-        time.sleep(1)
-        hand('out')
-    else:
-        print(DistanceSensor.checkdistance())
-        print("not in range")
+    # if .10 < DistanceSensor.checkdistance() < .11:
+    print(DistanceSensor.checkdistance())
+    openClaw()
+    time.sleep(1)
+    hand('in')
+    time.sleep(1)
+    catch()  # pwm.set_pwm(15, 0, 574)
+    time.sleep(1)
+    clean_all()
+    time.sleep(1)
+    hand('out')
+    # else:
+    #     print(DistanceSensor.checkdistance())
+    #     print("not in range")
     time.sleep(5)
 
 
