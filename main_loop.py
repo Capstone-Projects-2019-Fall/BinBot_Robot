@@ -7,11 +7,16 @@ from src.interfaces import Arm
 from src.interfaces import Camera
 from src.interfaces.DistanceSensor import checkdistance
 
-Jose_laptop = "192.168.43.116"
-SeanR_laptop = "192.168.43.156"
-SeanD_laptop = "192.168.43.68"
-SeanD_laptop_linux = "192.168.0.26"
-LOCAL_HOST = "127.0.0.1"
+# JOSE'S HOTSPOT
+# Jose_laptop = "192.168.43.116"
+# SeanR_laptop = "192.168.43.156"
+# SeanD_laptop = "192.168.43.68"
+# SeanD_laptop_linux = "192.168.0.26"
+# LOCAL_HOST = "127.0.0.1"
+
+# TUSECUREWIRELESS
+# BinBot = 10.108.92.75
+SeanR_laptop = "10.108.22.58"
 
 IP = SeanR_laptop
 PORT = 7001
