@@ -56,6 +56,7 @@ class Camera:
         #     return encoded
 
 
+# **** DEPRICATED ****
 def take_photo():
     camera = picamera.PiCamera()
     camera.resolution = (1280, 720)
@@ -68,6 +69,7 @@ def take_photo():
     camera.stop_preview()
 
 
+# **** DEPRICATED ****
 # def capture_img_stream(camera):
 #     with camera:
 #         camera.start_preview()
