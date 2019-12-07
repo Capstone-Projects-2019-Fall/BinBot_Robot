@@ -93,6 +93,7 @@ def put_down():  # Method that completes steps to put down an object
     time.sleep(2)
     pwm.set_pwm(13, 0, 140)
     pwm.set_pwm(12, 0, 100)
+    time.sleep(2)
     openClaw()
 
 
