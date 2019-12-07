@@ -101,13 +101,15 @@ try:
                 print('No treads')
 
 except KeyboardInterrupt as e:
-    print(f"Exeption throw: {e}")
+    print(f"Keyboard Interrupt: {e}")
     Treads.destroy()
     Arm.clean_all()
     LED.colorWipe(Color(0, 0, 0))
+    raise
 
 except Exception as e:
     print(f"Exeption throw: {e}")
     Treads.destroy()
     Arm.clean_all()
     LED.colorWipe(Color(0, 0, 0))
+    raise
