@@ -34,7 +34,7 @@ def hand(command):  # Control the arm movements in and out
 
 
 def openClaw():  # Open claw of the robot
-    pwm.set_pwm(15, 0, 80)
+    pwm.set_pwm(15, 0, 100)
 
 
 def catch():  # Close claw of the robot
