@@ -87,9 +87,12 @@ try:
                         else:
                             print("skipping")
                             # Treads.executeTreadInstruction(movement)
+
+                    # Clean up after instructions
+                    LED.colorWipe(Color(0, 0, 0))
                     Treads.destroy()
                     Arm.clean_all()
-                    LED.colorWipe(Color(0, 0, 0))
+
                 except Exception as e:
                     print(f"Instruction execution exception: {e}")
                     # Treads.destroy()
@@ -102,14 +105,14 @@ try:
 
 except KeyboardInterrupt as e:
     print(f"Keyboard Interrupt: {e}")
+    LED.colorWipe(Color(0, 0, 0))
     Treads.destroy()
     Arm.clean_all()
-    LED.colorWipe(Color(0, 0, 0))
     raise
 
 except Exception as e:
     print(f"Exeption throw: {e}")
+    LED.colorWipe(Color(0, 0, 0))
     Treads.destroy()
     Arm.clean_all()
-    LED.colorWipe(Color(0, 0, 0))
     raise
