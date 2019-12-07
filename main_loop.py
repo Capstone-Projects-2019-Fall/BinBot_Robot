@@ -65,32 +65,35 @@ try:
             treads = instr_in.treads()
             if treads is not None:
                 # print(treads)
-                print("Tread setup start")
-                Treads.setup()
-                print("Tread setup end")
-                for movement in treads:
-                    # LED.colorWipe(Color(255, 16, 0))  # LED RED
-                    print(f"Exe: {movement}")
-                    # RETREIVE OBJECT
-                    if movement["angle"] == 0.0 and movement["distance"] == 1.0:
-                        # LED.colorWipe(Color(0, 225, 0))  # LED GREEN
-                        # Treads.moveBySensor()
-                        # x = DistanceSensor.checkdistance()
-                        # print(f"dist1: {x}")
-                        # x = (x*10) - 1.0
-                        # print(f"dist2: {x}")
-                        # new_movement = {"angle": 0, "distance": x}
-                        # Treads.executeTreadInstruction(new_movement)
+                try:
+                    Treads.setup()
+                    for movement in treads:
+                        # LED.colorWipe(Color(255, 16, 0))  # LED RED
+                        print(f"Exe: {movement}")
+                        # RETREIVE OBJECT
+                        if movement["angle"] == 0.0 and movement["distance"] == 1.0:
+                            # LED.colorWipe(Color(0, 225, 0))  # LED GREEN
+                            Treads.moveBySensor()
+                            # x = DistanceSensor.checkdistance()
+                            # print(f"dist1: {x}")
+                            # x = (x*10) - 1.0
+                            # print(f"dist2: {x}")
+                            # new_movement = {"angle": 0, "distance": x}
+                            # Treads.executeTreadInstruction(new_movement)
 
-                        print("PICK UP")
-                        # Arm.pick_up()
-                    else:
-                        print("skipping")
-                        # Treads.executeTreadInstruction(movement)
+                            print("PICK UP")
+                            Arm.pick_up()
+                        else:
+                            print("skipping")
+                            # Treads.executeTreadInstruction(movement)
 
-                # Clean up after instructions
-                # LED.colorWipe(Color(0, 0, 0))
-                Treads.destroy()
+                    # Clean up after instructions
+                    # LED.colorWipe(Color(0, 0, 0))
+                    Treads.destroy()
+
+                except Exception as e:
+                    print(f"Exception thrown executing instructions: {e}")
+                    Treads.destroy()
 
             else:
                 print('No treads')

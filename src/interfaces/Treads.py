@@ -52,8 +52,8 @@ def moveBySensor():
 
     # Move motors forward
     in_range = False
-    _motorLeft(1, left_forward, speed*.5)
-    _motorRight(1, right_forward, speed*.5)
+    _motorLeft(1, left_forward, speed*.7)
+    _motorRight(1, right_forward, speed*.7)
 
     # Continue checking distance until within range of object
     while not in_range:
