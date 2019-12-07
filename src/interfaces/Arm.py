@@ -87,6 +87,15 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
     time.sleep(5)
 
 
+def put_down():  # Method that completes steps to put down an object
+    pwm.set_pwm(13, 0, 75)
+    pwm.set_pwm(12, 0, 50)
+    time.sleep(2)
+    pwm.set_pwm(13, 0, 140)
+    pwm.set_pwm(12, 0, 100)
+    openClaw()
+
+
 if __name__ == '__main__':
     try:
 
