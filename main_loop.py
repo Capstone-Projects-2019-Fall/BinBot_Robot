@@ -83,15 +83,16 @@ try:
 
                             print("PICK UP")
                             Arm.pick_up()
-                            turn_around = {"angle": 179, "distance": 1.0},
+                            turn_around = {"angle": 179.0, "distance": 1.0},
                             Treads.executeTreadInstruction(turn_around)
+                            Arm.put_down()
                         else:
                             print("skipping")
                             # Treads.executeTreadInstruction(movement)
 
                     # Clean up after instructions
                     LED.colorWipe(Color(0, 0, 0))
-                    Treads.destroy()
+                    # Treads.destroy()
 
                 except Exception as e:
                     print(f"Exception thrown executing instructions: {e}")
