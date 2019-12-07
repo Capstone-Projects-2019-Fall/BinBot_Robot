@@ -35,6 +35,7 @@ def is_json(myjson):
 
 
 try:
+    Treads.setup()
     while True:
         LED.colorWipe(Color(0, 0, 255))  # LED BLUE
 
@@ -66,7 +67,7 @@ try:
             if treads is not None:
                 # print(treads)
                 try:
-                    Treads.setup()
+                    # Treads.setup()
                     for movement in treads:
                         LED.colorWipe(Color(255, 16, 0))  # LED RED
                         print(f"Exe: {movement}")
@@ -97,19 +98,18 @@ try:
 
                 except Exception as e:
                     print(f"Exception thrown executing instructions: {e}")
-                    Treads.destroy()
+                    # Treads.destroy()
+                    raise
 
             else:
                 print('No treads')
 
 except KeyboardInterrupt as e:
     print(f"BinBot Keyboard Interrupt: {e}")
-    LED.colorWipe(Color(0, 0, 0))
-    Treads.destroy()
-    raise
 
 except Exception as e:
     print(f"BinBot Exeption throw: {e}")
+
+finally:
     LED.colorWipe(Color(0, 0, 0))
     Treads.destroy()
-    raise
