@@ -83,6 +83,8 @@ try:
 
                             print("PICK UP")
                             Arm.pick_up()
+                            turn_around = {"angle": 179, "distance": 1.0},
+                            Treads.executeTreadInstruction(turn_around)
                         else:
                             print("skipping")
                             # Treads.executeTreadInstruction(movement)
@@ -100,6 +102,8 @@ try:
 
 except KeyboardInterrupt as e:
     print(f"BinBot Keyboard Interrupt: {e}")
+    LED.colorWipe(Color(0, 0, 0))
+    Treads.destroy()
     raise
 
 except Exception as e:
