@@ -83,8 +83,9 @@ try:
 
                             print("PICK UP")
                             Arm.pick_up()
-                            turn_around = {"angle": 179.0, "distance": 1.0},
+                            turn_around = {"angle": 179.0, "distance": 1.0}
                             Treads.executeTreadInstruction(turn_around)
+                            time.sleep(1)
                             Arm.put_down()
                         else:
                             print("skipping")
