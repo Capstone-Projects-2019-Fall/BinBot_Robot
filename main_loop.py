@@ -99,11 +99,11 @@ try:
                 print('No treads')
 
 except KeyboardInterrupt as e:
-    print(f"Keyboard Interrupt: {e}")
+    print(f"BinBot Keyboard Interrupt: {e}")
     raise
 
 except Exception as e:
-    print(f"Exeption throw: {e}")
+    print(f"BinBot Exeption throw: {e}")
     LED.colorWipe(Color(0, 0, 0))
     Treads.destroy()
     raise

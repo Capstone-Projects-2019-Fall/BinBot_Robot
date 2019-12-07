@@ -52,18 +52,16 @@ def moveBySensor():
 
     # Move motors forward
     in_range = False
-    _motorLeft(1, left_forward, speed*.7)
-    _motorRight(1, right_forward, speed*.7)
+    _motorLeft(1, left_forward, speed*.6)
+    _motorRight(1, right_forward, speed*.6)
 
     # Continue checking distance until within range of object
     while not in_range:
         x = DistanceSensor.checkdistance()
-        print(f"Distance: {x}")
         if x < 0.13:
             _motorStop()
+            print(f"Distance stopped: {x}")
             in_range = True
-
-    destroy()
 
 
 def executeTreadInstruction(instruction):
