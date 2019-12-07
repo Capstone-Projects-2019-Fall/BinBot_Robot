@@ -86,7 +86,6 @@ try:
                             Arm.pick_up()
                             turn_around = {"angle": 179.0, "distance": 1.0}
                             Treads.executeTreadInstruction(turn_around)
-                            time.sleep(1)
                             Arm.put_down()
                         else:
                             print("skipping")
@@ -99,7 +98,7 @@ try:
                 except Exception as e:
                     print(f"Exception thrown executing instructions: {e}")
                     # Treads.destroy()
-                    raise
+                    raise e
 
             else:
                 print('No treads')

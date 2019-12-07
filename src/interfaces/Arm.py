@@ -32,9 +32,12 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
         time.sleep(2)
-        pwm.set_pwm(12, 0, 400)
-        pwm.set_pwm(13, 0, 299)
-        pwm.set_pwm(13, 0, 100)
+        # pwm.set_pwm(12, 0, 400)
+        # pwm.set_pwm(13, 0, 299)
+        # pwm.set_pwm(13, 0, 100)
+        pwm.set_pwm(12, 0, 450)
+        pwm.set_pwm(13, 0, 399)
+        pwm.set_pwm(13, 0, 200)
 
 
 def openClaw():  # Open claw of the robot
@@ -88,6 +91,7 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
 
 
 def put_down():  # Method that completes steps to put down an object
+    time.sleep(1)
     pwm.set_pwm(13, 0, 75)
     pwm.set_pwm(12, 0, 50)
     time.sleep(2)
