@@ -89,6 +89,7 @@ try:
                             # Treads.executeTreadInstruction(movement)
                     Treads.destroy()
                     Arm.clean_all()
+                    LED.colorWipe(Color(0, 0, 0))
                 except Exception as e:
                     print(f"Instruction execution exception: {e}")
                     # Treads.destroy()

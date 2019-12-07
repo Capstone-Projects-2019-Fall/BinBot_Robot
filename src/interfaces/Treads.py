@@ -35,7 +35,7 @@ left_backward = 1
 right_forward = 0
 right_backward = 1
 
-pwn_A = 0
+pwm_A = 0
 pwm_B = 0
 
 d_scale = 0.3         # Scales sleep to unit of distance
