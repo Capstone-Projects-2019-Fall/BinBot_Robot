@@ -9,6 +9,7 @@ Date: 2019/11/8
 
 import time
 import RPi.GPIO as GPIO  # Linux required!
+from src.interfaces import DistanceSensor
 test = False
 # test = True
 
@@ -41,6 +42,26 @@ d_scale = 0.3         # Scales sleep to unit of distance
 speed = 100           # Speed at which the treads move
 slide_bias = 0.85     # Scales the speed of the counter turning tread based on friction of terrain
 sleep_bias = 0.90      # Scales the sleep time based on friction of terrain
+
+
+def moveBySensor():
+    """
+    Attempts to move to a detected object with better precision based on the proximity sensor.
+    :return:
+    """
+
+    # Move motors forward
+    in_range = False
+    _motorLeft(1, left_forward, speed)
+    _motorRight(1, right_forward, speed)
+
+    # Continue checking distance until within range of object
+    while not in_range:
+        x = DistanceSensor.checkdistance()
+        print("Distance: %s", x)
+        if 0.10 < x < 0.11:
+            _motorStop()
+            in_range = True
 
 
 def executeTreadInstruction(instruction):

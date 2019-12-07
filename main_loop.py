@@ -6,7 +6,7 @@ from src.interfaces import Treads
 from src.interfaces import Arm
 from src.interfaces import Camera
 from src.interfaces import LED
-from src.interfaces.DistanceSensor import checkdistance
+from src.interfaces import DistanceSensor
 
 # JOSE'S HOTSPOT
 # Jose_laptop = "192.168.43.116"
@@ -42,7 +42,7 @@ while True:
         print("Capturing image..")
         Arm.home()  # Move arm out of camera view
         img = camera.capture_image()
-        distance = checkdistance()
+        distance = DistanceSensor.checkdistance()
         print(f"Distance: {distance}")
         instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, distance, None)
 
@@ -71,14 +71,15 @@ while True:
                         print(f"Exe: {movement}")
                         # RETREIVE OBJECT
                         if movement["angle"] == 0.0 and movement["distance"] == 1.0:
-                            # LED GREEN
-                            LED.colorWipe(Color(0, 225, 0))
-                            x = checkdistance()
-                            print(f"dist1: {x}")
-                            x = (x*10) - 1.0
-                            print(f"dist2: {x}")
-                            new_movement = {"angle": 0, "distance": x}
-                            Treads.executeTreadInstruction(new_movement)
+                            LED.colorWipe(Color(0, 225, 0))  # LED GREEN
+                            Treads.moveBySensor()
+                            # x = DistanceSensor.checkdistance()
+                            # print(f"dist1: {x}")
+                            # x = (x*10) - 1.0
+                            # print(f"dist2: {x}")
+                            # new_movement = {"angle": 0, "distance": x}
+                            # Treads.executeTreadInstruction(new_movement)
+
                             print("PICK UP")
                             Arm.pick_up()
                         else:
