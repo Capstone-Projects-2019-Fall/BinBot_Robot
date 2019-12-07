@@ -25,13 +25,17 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 140)
         pwm.set_pwm(12, 0, 100)
     elif command == 'out':  # the arm moves back in to bring in item
-        pwm.set_pwm(13, 0, 100)
-        pwm.set_pwm(13, 0, 99)
+        pwm.set_pwm(13, 0, 200)
+        pwm.set_pwm(13, 0, 199)
         time.sleep(1)
         while 1:
-            pwm.set_pwm(12, 0, 450)
+            pwm.set_pwm(12, 0, 500)
             pwm.set_pwm(13, 0, 399)
             pwm.set_pwm(13, 0, 200)
+            time.sleep(2)
+            pwm.set_pwm(12, 0, 450)
+            pwm.set_pwm(13, 0, 350)
+            pwm.set_pwm(13, 0, 150)
 
 
 def openClaw():  # Open claw of the robot
