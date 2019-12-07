@@ -17,6 +17,10 @@ pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
 
+def camera_ang():  # Reset camera angle to point down
+    pwm.set_pwm(11, 0, 300)
+
+
 def hand(command):  # Control the arm movements in and out
     if command == 'in':  # the arm moves out to reach item
         pwm.set_pwm(13, 0, 75)
