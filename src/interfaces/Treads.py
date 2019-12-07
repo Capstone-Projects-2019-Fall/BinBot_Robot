@@ -52,8 +52,8 @@ def moveBySensor():
 
     # Move motors forward
     in_range = False
-    _motorLeft(1, left_forward, speed*80)
-    _motorRight(1, right_forward, speed*80)
+    _motorLeft(1, left_forward, speed*.8)
+    _motorRight(1, right_forward, speed*.8)
 
     # Continue checking distance until within range of object
     while not in_range:
@@ -217,7 +217,7 @@ def setup():
         pwm_A = GPIO.PWM(Motor_A_EN, 1000)
         pwm_B = GPIO.PWM(Motor_B_EN, 1000)
     except:
-        pass
+        raise
 
 
 def _motorStop():
@@ -441,3 +441,4 @@ if __name__ == '__main__':
         except Exception as e:
             print("Tread exception: %s", e)
             destroy()
+            raise

@@ -90,16 +90,18 @@ try:
                     Treads.destroy()
                     Arm.clean_all()
                 except Exception as e:
-                    print("Instruction execution exception: %s", e)
+                    print(f"Instruction execution exception: {e}")
                     Treads.destroy()
                     Arm.clean_all()
                     LED.colorWipe(Color(0, 0, 0))
+                    raise
 
             else:
                 print('No treads')
 
 except Exception as e:
-    print("Exeption throw: %s", e)
+    print(f"Exeption throw: {e}")
     Treads.destroy()
     Arm.clean_all()
     LED.colorWipe(Color(0, 0, 0))
+    raise
