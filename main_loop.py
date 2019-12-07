@@ -91,17 +91,22 @@ try:
                     Arm.clean_all()
                 except Exception as e:
                     print(f"Instruction execution exception: {e}")
-                    Treads.destroy()
-                    Arm.clean_all()
-                    LED.colorWipe(Color(0, 0, 0))
+                    # Treads.destroy()
+                    # Arm.clean_all()
+                    # LED.colorWipe(Color(0, 0, 0))
                     raise
 
             else:
                 print('No treads')
+
+except KeyboardInterrupt as e:
+    print(f"Exeption throw: {e}")
+    Treads.destroy()
+    Arm.clean_all()
+    LED.colorWipe(Color(0, 0, 0))
 
 except Exception as e:
     print(f"Exeption throw: {e}")
     Treads.destroy()
     Arm.clean_all()
     LED.colorWipe(Color(0, 0, 0))
-    raise
