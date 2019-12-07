@@ -65,14 +65,16 @@ try:
             treads = instr_in.treads()
             if treads is not None:
                 # print(treads)
+                print("Tread setup start")
                 Treads.setup()
+                print("Tread setup end")
                 for movement in treads:
                     # LED.colorWipe(Color(255, 16, 0))  # LED RED
                     print(f"Exe: {movement}")
                     # RETREIVE OBJECT
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         # LED.colorWipe(Color(0, 225, 0))  # LED GREEN
-                        Treads.moveBySensor()
+                        # Treads.moveBySensor()
                         # x = DistanceSensor.checkdistance()
                         # print(f"dist1: {x}")
                         # x = (x*10) - 1.0
@@ -81,7 +83,7 @@ try:
                         # Treads.executeTreadInstruction(new_movement)
 
                         print("PICK UP")
-                        Arm.pick_up()
+                        # Arm.pick_up()
                     else:
                         print("skipping")
                         # Treads.executeTreadInstruction(movement)
@@ -101,5 +103,4 @@ except Exception as e:
     print(f"Exeption throw: {e}")
     # LED.colorWipe(Color(0, 0, 0))
     Treads.destroy()
-    Arm.clean_all()
     raise
