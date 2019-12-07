@@ -34,8 +34,9 @@ def is_json(myjson):
     return True
 
 
-while True:
-    try:
+try:
+    while True:
+    # try:
         LED.colorWipe(Color(0, 0, 255))  # LED BLUE
 
         # Capture picture
@@ -97,8 +98,8 @@ while True:
             else:
                 print('No treads')
 
-    except Exception as e:
-        print("Exeption throw: %s", e)
-        Treads.destroy()
-        Arm.clean_all()
-        LED.colorWipe(Color(0, 0, 0))
+except Exception as e:
+    print("Exeption throw: %s", e)
+    Treads.destroy()
+    Arm.clean_all()
+    LED.colorWipe(Color(0, 0, 0))
