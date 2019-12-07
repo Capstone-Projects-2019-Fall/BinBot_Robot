@@ -1,5 +1,6 @@
 import json
 import time
+from rpi_ws281x import *
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
 from src.interfaces import Treads

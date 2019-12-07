@@ -58,8 +58,8 @@ def moveBySensor():
     # Continue checking distance until within range of object
     while not in_range:
         x = DistanceSensor.checkdistance()
-        print("Distance: %s", x)
-        if 0.10 < x < 0.11:
+        print(f"Distance: {x}")
+        if 0.11 < x < 0.12:
             _motorStop()
             in_range = True
 
