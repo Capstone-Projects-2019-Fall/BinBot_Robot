@@ -57,6 +57,7 @@ def home():  # Brings the arm to a home position
     pwm.set_pwm(12, 0, 450)
     pwm.set_pwm(13, 0, 399)
     pwm.set_pwm(13, 0, 200)
+    camera_ang()
 
 
 def clean_all():  # Reset servos/channels

@@ -63,6 +63,8 @@ def moveBySensor():
             _motorStop()
             in_range = True
 
+    destroy()
+
 
 def executeTreadInstruction(instruction):
     """
