@@ -91,8 +91,8 @@ try:
                         turn_back = {"angle": 179.0, "distance": 1.0}
                         Treads.executeTreadInstruction(turn_back)
                     else:
-                        print("skipping tread instruction")
-                        # Treads.executeTreadInstruction(movement)
+                        # print("skipping tread instruction")
+                        Treads.executeTreadInstruction(movement)
                 print()
 
             else:
