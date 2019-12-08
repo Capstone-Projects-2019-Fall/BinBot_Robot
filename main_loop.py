@@ -76,21 +76,12 @@ try:
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         LED.colorWipe(Color(0, 225, 0))  # LED GREEN
                         Treads.moveBySensor()
-                        # x = DistanceSensor.checkdistance()
-                        # print(f"dist1: {x}")
-                        # x = (x*10) - 1.0
-                        # print(f"dist2: {x}")
-                        # new_movement = {"angle": 0, "distance": x}
-                        # Treads.executeTreadInstruction(new_movement)
-
-                        print("PICKING UP")
                         Arm.pick_up()
-                        turn_around = {"angle": 179.0, "distance": 1.0}
-                        Treads.executeTreadInstruction(turn_around)
+                        Treads.executeTreadInstruction({"angle": 179.0, "distance": 1.0})  # Turn around
                         Arm.put_down()
+                        Treads.executeTreadInstruction({"angle": 180, "distance": 0.5})  # Move back after putting down
                         Arm.home()
-                        turn_back = {"angle": 179.0, "distance": 1.0}
-                        Treads.executeTreadInstruction(turn_back)
+                        Treads.executeTreadInstruction({"angle": 179.0, "distance": 1.0})  # Turn back
                     else:
                         # print("skipping tread instruction")
                         Treads.executeTreadInstruction(movement)
