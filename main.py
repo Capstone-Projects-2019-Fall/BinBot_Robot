@@ -60,12 +60,13 @@ try:
 
         print(f"Exhcange time: {time.time() - cur_t0:.4g}")
 
-        print(msg_in)
+        # print(msg_in)
         if is_json(msg_in):
             instr_in = Instruction(Instruction.FROM_JSON, msg_in)
             status = instr_in.status()
             treads = instr_in.treads()
             if treads is not None:
+                print(f"---------------- {status} ----------------")
                 if status == "PATROL":
                     LED.colorWipe(Color(255, 255, 0))  # LED YELLOW
                 else:

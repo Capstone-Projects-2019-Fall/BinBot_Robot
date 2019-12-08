@@ -32,10 +32,10 @@ def hand(command):  # Control the arm movements in and out
         pwm.set_pwm(13, 0, 100)
         pwm.set_pwm(13, 0, 99)
         time.sleep(2)
-        pwm.set_pwm(12, 0, 400)
-        pwm.set_pwm(13, 0, 299)
-        pwm.set_pwm(13, 0, 100)
-        time.sleep(2)
+        # pwm.set_pwm(12, 0, 400)
+        # pwm.set_pwm(13, 0, 299)
+        # pwm.set_pwm(13, 0, 100)
+        # time.sleep(2)
         # home pickup
         pwm.set_pwm(12, 0, 450)
         pwm.set_pwm(13, 0, 399)
@@ -84,7 +84,7 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
     time.sleep(1)
     catch()  # pwm.set_pwm(15, 0, 574)
     time.sleep(1)
-    # clean_all()
+    clean_all()
     time.sleep(1)
     hand('out')
     # else:
