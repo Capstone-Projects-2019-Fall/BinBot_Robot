@@ -7,7 +7,7 @@ Date: 2019/11/14
 '''
 
 from __future__ import division
-from src.interfaces import DistanceSensor
+from src.interfaces import DistanceSensor, Treads
 import time
 import RPi.GPIO as GPIO
 import sys
@@ -82,6 +82,7 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
     time.sleep(1)
     hand('in')
     time.sleep(1)
+    Treads.moveBySensor()
     catch()  # pwm.set_pwm(15, 0, 574)
     time.sleep(1)
     clean_all()
