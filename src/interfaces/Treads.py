@@ -81,21 +81,21 @@ def executeTreadInstruction(instruction):
     distance = instruction["distance"]
 
     if angle == 0.0 or angle == 360.0:
-        print(f"Moving {distance * 10}:.4g cm forward.")
+        print(f"Moving {distance * 10:.4g} cm forward.")
         _forward(distance)
 
     elif angle == 180.0:
-        print(f"Moving {distance * 10}:.4g cm backward.")
+        print(f"Moving {distance * 10:.4g} cm backward.")
         _backward(distance)
 
     elif 0.0 < angle < 180.0:
-        print(f"Treads turning {angle}:.4g degrees right.")
+        print(f"Treads turning {angle:.4g} degrees right.")
         turn_scale = angle * 0.01
         _rightTurn(distance, turn_scale)
 
     elif 180.0 < angle < 360.0:
         angle -= 180.0
-        print(f"Treads turning {angle}:.4g degrees left.")
+        print(f"Treads turning {angle:.4g} degrees left.")
         turn_scale = angle * 0.01
         _leftTurn(distance, turn_scale)
     else:
