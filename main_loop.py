@@ -20,10 +20,8 @@ from src.interfaces import DistanceSensor
 # BinBot = 10.108.92.75
 SeanR_laptop = "10.108.22.58"
 
-IP = SeanR_laptop
+IP = SeanR_laptop  # IP hosting processing server
 PORT = 7001
-LED = LED.LED()
-camera = Camera.Camera()
 
 
 def is_json(myjson):
@@ -35,6 +33,9 @@ def is_json(myjson):
 
 
 try:
+    # Initialize interfaces
+    LED = LED.LED()
+    camera = Camera.Camera()
     Treads.setup()
     while True:
         LED.colorWipe(Color(0, 0, 255))  # LED BLUE
@@ -65,40 +66,29 @@ try:
             status = instr_in.status()
             treads = instr_in.treads()
             if treads is not None:
-                # print(treads)
-                try:
-                    # Treads.setup()
-                    for movement in treads:
-                        LED.colorWipe(Color(255, 16, 0))  # LED RED
-                        print(f"Exe: {movement}")
-                        # RETREIVE OBJECT
-                        if movement["angle"] == 0.0 and movement["distance"] == 1.0:
-                            LED.colorWipe(Color(0, 225, 0))  # LED GREEN
-                            Treads.moveBySensor()
-                            # x = DistanceSensor.checkdistance()
-                            # print(f"dist1: {x}")
-                            # x = (x*10) - 1.0
-                            # print(f"dist2: {x}")
-                            # new_movement = {"angle": 0, "distance": x}
-                            # Treads.executeTreadInstruction(new_movement)
+                for movement in treads:
+                    LED.colorWipe(Color(255, 0, 0))  # LED RED
+                    print(f"Exe: {movement}")
+                    # RETREIVE OBJECT
+                    if movement["angle"] == 0.0 and movement["distance"] == 1.0:
+                        LED.colorWipe(Color(0, 225, 0))  # LED GREEN
+                        Treads.moveBySensor()
+                        # x = DistanceSensor.checkdistance()
+                        # print(f"dist1: {x}")
+                        # x = (x*10) - 1.0
+                        # print(f"dist2: {x}")
+                        # new_movement = {"angle": 0, "distance": x}
+                        # Treads.executeTreadInstruction(new_movement)
 
-                            print("PICK UP")
-                            Arm.pick_up()
-                            turn_around = {"angle": 179.0, "distance": 1.0}
-                            Treads.executeTreadInstruction(turn_around)
-                            Arm.put_down()
-                        else:
-                            print("skipping")
-                            # Treads.executeTreadInstruction(movement)
-
-                    # Clean up after instructions
-                    LED.colorWipe(Color(0, 0, 0))
-                    # Treads.destroy()
-
-                except Exception as e:
-                    print(f"Exception thrown executing instructions: {e}")
-                    # Treads.destroy()
-                    raise e
+                        print("PICKING UP")
+                        Arm.pick_up()
+                        turn_around = {"angle": 179.0, "distance": 1.0}
+                        Treads.executeTreadInstruction(turn_around)
+                        Arm.put_down()
+                    else:
+                        print("skipping tread instruction")
+                        # Treads.executeTreadInstruction(movement)
+                print()
 
             else:
                 print('No treads')
