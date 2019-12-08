@@ -87,7 +87,7 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
     # else:
     #     print(DistanceSensor.checkdistance())
     #     print("not in range")
-    time.sleep(5)
+    time.sleep(2)
 
 
 def put_down():  # Method that completes steps to put down an object
@@ -99,6 +99,7 @@ def put_down():  # Method that completes steps to put down an object
     pwm.set_pwm(12, 0, 100)
     time.sleep(2)
     openClaw()
+    time.sleep(2)
 
 
 if __name__ == '__main__':
