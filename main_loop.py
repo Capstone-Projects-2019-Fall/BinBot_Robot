@@ -88,6 +88,7 @@ try:
                         turn_around = {"angle": 179.0, "distance": 1.0}
                         Treads.executeTreadInstruction(turn_around)
                         Arm.put_down()
+                        Arm.home()
                         turn_back = {"angle": 179.0, "distance": 1.0}
                         Treads.executeTreadInstruction(turn_back)
                     else:
