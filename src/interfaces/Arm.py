@@ -59,6 +59,7 @@ def cir_back():  # Rotates the claw back to starting position
 
 
 def home():  # Brings the arm to a home position
+    time.sleep(1)
     pwm.set_pwm(12, 0, 450)
     pwm.set_pwm(13, 0, 399)
     pwm.set_pwm(13, 0, 200)
@@ -83,7 +84,7 @@ def pick_up():  # Method that completes all steps of the BinBot pick up
     time.sleep(1)
     catch()  # pwm.set_pwm(15, 0, 574)
     time.sleep(1)
-    clean_all()
+    # clean_all()
     time.sleep(1)
     hand('out')
     # else:
