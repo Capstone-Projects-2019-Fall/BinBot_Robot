@@ -46,7 +46,7 @@ try:
         Arm.home()  # Move arm out of camera view
         img = camera.capture_image()
         distance = DistanceSensor.checkdistance()
-        print(f"Distance: {distance}")
+        print(f"Distance: {distance:.4g}")
         instr_out = Instruction(Instruction.FROM_DATA, "PATROL", img, distance, None)
 
         # Send image to server
@@ -58,7 +58,7 @@ try:
         print("Received image from server")
         connection.close()
 
-        print(f"exhcange time: {time.time() - cur_t0}")
+        print(f"Exhcange time: {time.time() - cur_t0:.4g}")
 
         print(msg_in)
         if is_json(msg_in):

@@ -154,7 +154,7 @@ def _forward(distance):
     _motorRight(1, right_forward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance*10) + " cm forward.")
+    # print("Moved " + str(distance*10) + " cm forward.")
 
 
 def _backward(distance):
@@ -168,7 +168,7 @@ def _backward(distance):
     _motorRight(1, right_backward, speed)
     time.sleep(distance * d_scale)
     _motorStop()
-    print("Moved " + str(distance*10) + " cm backward.")
+    # print("Moved " + str(distance*10) + " cm backward.")
 
 
 def _rightTurn(distance, t_scale):
@@ -183,7 +183,7 @@ def _rightTurn(distance, t_scale):
     _motorRight(1, right_backward, int(speed * slide_bias))
     time.sleep((distance * t_scale) * sleep_bias)
     _motorStop()
-    print("Treads turned " + str(t_scale*100) + " degrees right.")
+    # print("Treads turned " + str(t_scale*100) + " degrees right.")
     pass
 
 
@@ -199,7 +199,7 @@ def _leftTurn(distance, t_scale):
     _motorRight(1, right_forward, speed)
     time.sleep((distance * t_scale) * sleep_bias)
     _motorStop()
-    print("Treads turned " + str(t_scale*100) + " degrees left.")
+    # print("Treads turned " + str(t_scale*100) + " degrees left.")
     pass
 
 
