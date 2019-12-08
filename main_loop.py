@@ -66,8 +66,11 @@ try:
             status = instr_in.status()
             treads = instr_in.treads()
             if treads is not None:
-                for movement in treads:
+                if status == "PATROL":
+                    LED.colorWipe(Color(255, 255, 0))  # LED YELLOW
+                else:
                     LED.colorWipe(Color(255, 0, 0))  # LED RED
+                for movement in treads:
                     print(f"Exe: {movement}")
                     # RETREIVE OBJECT
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
@@ -85,6 +88,8 @@ try:
                         turn_around = {"angle": 179.0, "distance": 1.0}
                         Treads.executeTreadInstruction(turn_around)
                         Arm.put_down()
+                        turn_back = {"angle": 179.0, "distance": 1.0}
+                        Treads.executeTreadInstruction(turn_back)
                     else:
                         print("skipping tread instruction")
                         # Treads.executeTreadInstruction(movement)
