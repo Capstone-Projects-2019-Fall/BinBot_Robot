@@ -52,15 +52,22 @@ def moveBySensor():
 
     # Move motors forward
     in_range = False
+    timeout_counter = 0  # counter to prevent endless while loop
     _motorLeft(1, left_forward, speed*.6)
     _motorRight(1, right_forward, speed*.6)
 
     # Continue checking distance until within range of object
     while not in_range:
         x = DistanceSensor.checkdistance()
+        timeout_counter += 1
+        # if x < 0.13 or timeout_counter > 100:
         if x < 0.13:
             _motorStop()
-            print(f"Distance stopped: {x}")
+            print(f"Distance stopped: {x} -- timeout: {timeout_counter}")
+            in_range = True
+        elif timeout_counter > 100:
+            _motorStop()
+            print(f"TIMEOUT_COUNTER REACHED -- Distance stopped: {x}")
             in_range = True
 
 
