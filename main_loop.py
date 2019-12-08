@@ -71,7 +71,7 @@ try:
                 else:
                     LED.colorWipe(Color(255, 0, 0))  # LED RED
                 for movement in treads:
-                    print(f"Exe: {movement}")
+                    print(f"\nExe {status}: {movement}")
                     # RETREIVE OBJECT
                     if movement["angle"] == 0.0 and movement["distance"] == 1.0:
                         LED.colorWipe(Color(0, 225, 0))  # LED GREEN
