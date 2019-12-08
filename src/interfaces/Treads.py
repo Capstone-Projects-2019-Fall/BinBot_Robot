@@ -60,8 +60,8 @@ def moveBySensor():
     while not in_range:
         x = DistanceSensor.checkdistance()
         timeout_counter += 1
-        # if x < 0.125 or timeout_counter > 100:
-        if x < 0.125:
+        # if x < 0.13 or timeout_counter > 100:
+        if x < 0.13:
             _motorStop()
             print(f"Distance stopped: {x} -- timeout: {timeout_counter}")
             in_range = True
