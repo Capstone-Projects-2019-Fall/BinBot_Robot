@@ -24,7 +24,8 @@ class Instruction:
     def instructionToJson(self):
         obj = {"status": str(self.__status),
                "img": Instruction.__img_to_string(self.__img),
-               "treads": [{"angle": 0.0, "distance": self.__treads}],
+               "treads": self.__treads,
+               # "treads": [{"angle": 0.0, "distance": self.__treads}],  # GSON FORMAT
                "arms": self.__arms,
                }
         return json.dumps(obj)
