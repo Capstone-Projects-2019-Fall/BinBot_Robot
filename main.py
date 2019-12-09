@@ -1,5 +1,6 @@
 import json
 import time
+import sys
 from rpi_ws281x import *
 from src.interfaces.Connection import Connection
 from src.instructions.instruction import Instruction
@@ -20,8 +21,13 @@ from src.interfaces import DistanceSensor
 # BinBot = 10.108.92.75
 SeanR_laptop = "10.108.22.58"
 
-IP = SeanR_laptop  # IP hosting processing server
 PORT = 7001
+
+# IP hosting processing server
+try:
+    IP = sys.argv[1]
+except Exception:
+    Ip = SeanR_laptop
 
 
 def is_json(myjson):
