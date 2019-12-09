@@ -40,8 +40,8 @@ pwm_B = 0
 
 d_scale = 0.3         # Scales sleep to unit of distance
 speed = 100           # Speed at which the treads move
-slide_bias = 0.85     # Scales the speed of the counter turning tread based on friction of terrain
-sleep_bias = 0.90      # Scales the sleep time based on friction of terrain
+slide_bias = 0.85     # Scales the speed of the counter-turning tread based on friction of terrain
+sleep_bias = 0.90     # Scales the sleep time based on friction of terrain
 
 
 def moveBySensor():
@@ -310,6 +310,19 @@ if __name__ == '__main__':
         {"angle": 270, "distance": 1.0},
         {"angle": 90, "distance": 1.0}
     ])
+
+    sample_instructions = dict(treads=[
+        {"angle": 90.0, "distance": 1.0},   # turn right 90*
+        {"angle": 0.0, "distance": 0.775},  # move forward 7.75 cm
+        {"angle": 45.0, "distance": 1.0},   # turn right 45 degrees 8 times
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0},
+        {"angle": 45.0, "distance": 1.0}
+        ])
 
     # full demo patrol that moves to 5 different spots
     five_node_patrol = dict(treads=[
