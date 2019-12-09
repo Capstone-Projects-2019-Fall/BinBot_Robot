@@ -15,19 +15,24 @@ from src.interfaces import DistanceSensor
 # SeanR_laptop = "192.168.43.156"
 # SeanD_laptop = "192.168.43.68"
 # SeanD_laptop_linux = "192.168.0.26"
+# Mike_laptop = "192.168.43.238"
 # LOCAL_HOST = "127.0.0.1"
 
 # TUSECUREWIRELESS
 # BinBot = 10.108.92.75
 SeanR_laptop = "10.108.22.58"
+Mike_laptop = "10.110.62.56"
 
 PORT = 7001
+IP = Mike_laptop  # IP hosting processing server
 
 # IP hosting processing server
-try:
-    IP = sys.argv[1]
-except Exception:
-    Ip = SeanR_laptop
+# try:
+#     # IP = sys.argv[1]
+#     IP = SeanR_laptop
+#     print(sys.argv)
+# except Exception:
+#     IP = SeanR_laptop
 
 
 def is_json(myjson):
